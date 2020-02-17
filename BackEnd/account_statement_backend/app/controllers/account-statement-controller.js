@@ -1,10 +1,14 @@
 const consola = require("consola");
+const StatementService = require("../services/account-statement-service.js");
 
 class AccountStatement {
-    constructor() {}
+    constructor() {
+        this.statementService = new StatementService();
+    }
 
     async createAccountStatement(req, res, next) {
         try {
+            await this.statementService.createNew;
         } catch (error) {
             console.error(error);
         }
@@ -21,6 +25,14 @@ class AccountStatement {
         try {
         } catch (error) {
             console.error(error);
+        }
+    }
+
+    async getAccountBalanceByDate(accountId) {
+        try {
+        } catch (error) {
+            consola.error(error);
+            throw error;
         }
     }
 }

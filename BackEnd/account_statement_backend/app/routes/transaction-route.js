@@ -10,8 +10,8 @@ class TransactionRouter extends Router {
 
     configureRoutes() {
         this.router.get(
-            "/byRange",
-            this.transactionController.getTransactionByRange,
+            "/by-date-range",
+            this.transactionController.getAccInfoByDateRange,
         );
     }
 }

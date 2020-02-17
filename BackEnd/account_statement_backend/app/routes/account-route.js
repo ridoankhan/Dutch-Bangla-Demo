@@ -9,7 +9,14 @@ class AccountRouter extends Router {
         this.accountController = new AccountController();
     }
 
-    configureRoutes() {}
+    async configureRoutes() {
+        try {
+            this.router.get(
+                "/:customerId",
+                this.accountController.findByCustomerNumber,
+            );
+        } catch (error) {}
+    }
 }
 
 module.exports = AccountRouter;

@@ -10,6 +10,10 @@ class TransactionRouter extends Router {
 
     async configureRoutes() {
         try {
+            this.router.post(
+                "/",
+                this.statementController.createAccountStatement,
+            );
         } catch (error) {
             console.error(error);
             throw error;
