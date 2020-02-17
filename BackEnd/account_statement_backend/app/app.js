@@ -11,6 +11,7 @@ class App {
     constructor() {
         this.app = express();
         this.router = new Router();
+        this.dbConfigurator = new DbConfigurator();
     }
 
     async configure() {
@@ -20,11 +21,10 @@ class App {
             this.app.use(bodyParser.json());
             this.app.use(bodyParser.urlencoded({ extended: true }));
 
-            const isRouterConfigured = await this.router.configureRoutes();
+            await this.router.configureRoutes();
+            await this.dbConfigurator.configure();
 
-            if (isRouterConfigured) {
-                this.app.use("/", this.router.getRouter());
-            }
+            this.app.use("/", this.router.getRouter());
         } catch (error) {
             consola.error(error);
             throw error;

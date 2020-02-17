@@ -11,11 +11,9 @@ class Router {
             this.router.use((req, res, next) => {
                 res.status(404).json("No route found!");
             });
-
-            return true;
         } catch (error) {
             console.error(error);
-            return false;
+            throw error;
         }
     }
 
