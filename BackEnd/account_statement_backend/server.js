@@ -11,13 +11,17 @@ class Server {
 
     async configureServer() {
         try {
-        } catch (error) {}
+            await this.app.configure();
+        } catch (error) {
+            consola.error(error);
+            throw error;
+        }
     }
 
     async startServer() {
         try {
-            const isConfigured = await this.configureServer();
-            this.server = http.createServer(this.app);
+            await this.configureServer();
+            this.server = http.createServer(this.app.getApp());
             this.server.listen(process.env.PORT, () => {
                 consola.info(
                     `server is running at http://localhost:${process.env.PORT}`,
