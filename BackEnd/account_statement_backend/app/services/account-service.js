@@ -18,6 +18,19 @@ class AccountService {
             throw error;
         }
     }
+
+    async getAccountIdByCustomerNumber(customerId) {
+        try {
+            const account = await Account.findOne({
+                attributes: ['id'],
+                where: { customerId: customerId }
+            });
+            return account.id;
+        } catch (error) {
+            consola.error(error);
+            throw error;
+        }
+    }
 }
 
 module.exports = AccountService;

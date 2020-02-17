@@ -7,6 +7,11 @@ class AccountRouter extends Router {
     constructor() {
         super();
         this.accountController = new AccountController();
+        try {
+            this.configureRoutes();
+        } catch (error) {
+            consola.error(error);
+        }
     }
 
     async configureRoutes() {
@@ -15,7 +20,10 @@ class AccountRouter extends Router {
                 "/:customerId",
                 this.accountController.findByCustomerNumber,
             );
-        } catch (error) {}
+        } catch (error) {
+            console.log(error);
+
+        }
     }
 }
 

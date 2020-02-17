@@ -9,9 +9,13 @@ class TransactionService {
 
     async findAccountInfoByDateRange({ customerId, startDate, endDate }) {
         try {
-            const accountId = await this.accountService.getAccountByCustomerId(
+            consola.info(customerId);
+            consola.info(startDate);
+            consola.info(endDate);
+            const accountId = await this.accountService.getAccountIdByCustomerNumber(
                 customerId,
             );
+            consola.info(`accountId: ${accountId}`);
             let accountOpeningBalance = await this.findAccOpeningBalance(
                 accountId,
                 startDate,

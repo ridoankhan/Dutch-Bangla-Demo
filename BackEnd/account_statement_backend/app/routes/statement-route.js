@@ -2,10 +2,11 @@ const StatementController = require("../controllers/account-statement-controller
 const Router = require("./router.js");
 const consola = require("consola");
 
-class TransactionRouter extends Router {
+class StatementRouter extends Router {
     constructor() {
         super();
         this.statementController = new StatementController();
+        this.configureRoutes();
     }
 
     async configureRoutes() {
@@ -25,4 +26,4 @@ class TransactionRouter extends Router {
     }
 }
 
-module.exports = TransactionRouter;
+module.exports = StatementRouter;

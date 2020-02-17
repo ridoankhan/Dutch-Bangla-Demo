@@ -4,6 +4,7 @@ const AccountService = require("../services/account-service.js");
 class AccountController {
     constructor() {
         this.accountService = new AccountService();
+        this.findByCustomerNumber = this.findByCustomerNumber.bind(this);
     }
 
     async findByCustomerNumber(req, res, next) {

@@ -4,6 +4,7 @@ const TransactionService = require("../services/transaction-service.js");
 class TransactionController {
     constructor() {
         this.transactionService = new TransactionService();
+        this.getAccInfoByDateRange = this.getAccInfoByDateRange.bind(this);
     }
 
     async getAccInfoByDateRange(req, res, next) {

@@ -6,10 +6,11 @@ class TransactionRouter extends Router {
     constructor() {
         super();
         this.transactionController = new TransactionController();
+        this.configureRoutes();
     }
 
     configureRoutes() {
-        this.router.get(
+        this.router.post(
             "/by-date-range",
             this.transactionController.getAccInfoByDateRange,
         );
