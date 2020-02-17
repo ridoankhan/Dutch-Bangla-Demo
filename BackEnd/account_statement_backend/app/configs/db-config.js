@@ -1,6 +1,11 @@
 const consola = require("consola");
 const Sequelize = require("sequelize");
 
+const Account = require("../models/account.js");
+const Customer = require("../models/customer.js");
+const Transaction = require("../models/transaction.js");
+const AccountStatement = require("../models/statement.js");
+
 class DbConfigurator {
     constructor() {}
 
@@ -43,6 +48,10 @@ class DbConfigurator {
 
     async initModels() {
         try {
+            Account.init(this.connection);
+            Customer.init(this.connection);
+            Transaction.init(this.connection);
+            AccountStatement.init(this.connection);
         } catch (error) {
             consola.error(error);
             throw error;
@@ -51,6 +60,13 @@ class DbConfigurator {
 
     async configureAssociations() {
         try {
+            this.belongsToOneAs(Account.model, Customer.model, "customer");
+            this.belongsToOneAs(Transaction.model, Account.model, "account");
+            this.belongsToOneAs(
+                AccountStatement.model,
+                Account.model,
+                "account",
+            );
         } catch (error) {
             consola.error(error);
             throw error;
@@ -59,6 +75,10 @@ class DbConfigurator {
 
     async syncModels() {
         try {
+            Customer.sync();
+            Account.sync();
+            Transaction.sync();
+            AccountStatement.sync();
         } catch (error) {
             consola.error(error);
             throw error;
