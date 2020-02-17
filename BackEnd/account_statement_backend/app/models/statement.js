@@ -5,11 +5,11 @@ class Statement extends Sequelize.Model {
         this.model = super.init(
             {
                 startDate: {
-                    type: Sequelize.STRING,
+                    type: Sequelize.DATE,
                     allowNull: false,
                 },
                 endDate: {
-                    type: Sequelize.STRING,
+                    type: Sequelize.DATE,
                     allowNull: false,
                 },
                 tx_hash: {
