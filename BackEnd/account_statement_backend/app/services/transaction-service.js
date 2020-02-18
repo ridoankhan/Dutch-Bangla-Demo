@@ -56,8 +56,7 @@ class TransactionService {
             let transactions = await Transaction.sequelize.query(
                 `SELECT * from Transaction
                 WHERE accountId = 1
-                AND date BETWEEN :start and :end`,
-                {
+                AND date BETWEEN :start and :end`, {
                     replacements: {
                         start: startDate,
                         end: endDate,
@@ -79,8 +78,7 @@ class TransactionService {
                 `SELECT max(date) as date
                  FROM Transaction
                  WHERE accountId = :selectedAccId
-                 AND date <= :openingDate`,
-                {
+                 AND date <= :openingDate`, {
                     replacements: {
                         selectedAccId: accountId,
                         openingDate: date,
@@ -90,8 +88,8 @@ class TransactionService {
             );
 
             accOpeningDate = JSON.stringify(
-                accOpeningDate[accOpeningDate.length - 1].date,
-            )
+                    accOpeningDate[accOpeningDate.length - 1].date,
+                )
                 .replace("T", " ")
                 .split(".")[0]
                 .replace('"', "");
@@ -104,8 +102,7 @@ class TransactionService {
                 FROM Transaction
                 WHERE accountId = :selectedAccId
                 AND
-                    date=:openingDate`,
-                {
+                    date=:openingDate`, {
                     replacements: {
                         selectedAccId: accountId,
                         openingDate: accOpeningDate,
@@ -113,8 +110,10 @@ class TransactionService {
                     type: QueryTypes.SELECT,
                 },
             );
-
-            return balance[balance.length - 1].balance;
+            if (balance.length > 0) {
+                return balance[balance.length - 1].balance;
+            }
+            throw new Error('No transaction found within given date range.')
         } catch (error) {
             consola.error(error);
             throw error;
