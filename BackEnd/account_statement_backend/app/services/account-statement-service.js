@@ -9,7 +9,19 @@ class StatementService {
 
     async createNew(req) {
         try {
-            const { startDate, endDate, tx_hash } = req.body;
+            const {
+                startDate,
+                endDate,
+                tx_hash,
+                closing_balance,
+                opening_balance,
+                debits,
+                credits,
+                dr_count,
+                cr_count,
+                uncollected_funds,
+            } = req.body;
+
             const account = await Account.findOne({
                 attributes: ["id"],
                 where: { customerId: req.body.customerId },
@@ -21,6 +33,13 @@ class StatementService {
                 startDate,
                 endDate,
                 tx_hash,
+                closing_balance,
+                opening_balance,
+                debits,
+                credits,
+                dr_count,
+                cr_count,
+                uncollected_funds,
                 accountId,
             }).save();
             return ac_statement;
@@ -33,6 +52,18 @@ class StatementService {
     async findByTsHash(tx_hash) {
         try {
             let statement = await Statement.findOne({
+                attributes: [
+                    "startDate",
+                    "endDate",
+                    "tx_hash",
+                    "closing_balance",
+                    "opening_balance",
+                    "debits",
+                    "credits",
+                    "dr_count",
+                    "cr_count",
+                    "uncollected_funds",
+                ],
                 where: {
                     tx_hash: tx_hash,
                 },

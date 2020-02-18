@@ -48,8 +48,8 @@ class DbConfigurator {
 
     async initModels() {
         try {
-            Account.init(this.connection);
             Customer.init(this.connection);
+            Account.init(this.connection);
             Transaction.init(this.connection);
             AccountStatement.init(this.connection);
         } catch (error) {
