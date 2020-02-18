@@ -5,6 +5,26 @@ var totalDebit = 0;
 var totalCredit = 0;
 var drCount = 0;
 var crCount = 0;
+
+function convertMonth(mon) {
+    var mnth = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+    return mnth[mon - 1];
+}
+
+function convertTime(time) {
+
+    var inputTime = time;
+    inputTime = inputTime.split("T")[0];
+    var day = inputTime.split("-")[2];
+    var month = inputTime.split("-")[1];
+    var year = inputTime.split("-")[0];
+
+    year = year % 100;
+    month = convertMonth(month);
+    var fullDate = day + "-" + month + "-" + year;
+    return fullDate;
+}
+
 $("#showAccountbtn").click(function() {
 
 
@@ -41,11 +61,16 @@ $("#showAccountbtn").click(function() {
                 if (response.transactions[i].reference == "NULL") {
                     response.transactions[i].reference = '';
                 }
+
+                response.transactions[i].date = convertTime(response.transactions[i].date);
+
+                response.transactions[i].balance = (response.transactions[i].balance.toString()) + ".00";
+
             }
 
             $("#finalDebits").html(totalDebit.toString() + ".00");
             $("#finalCredits").html(totalCredit.toString() + ".00");
-            $("#openingBalanceFinal").html(response.accountOpeningBalance);
+            $("#openingBalanceFinal").html(response.accountOpeningBalance + ".00");
             $("#drCount").html(drCount);
             $("#crCount").html(crCount);
 
@@ -85,11 +110,18 @@ $("#showAccountbtn").click(function() {
         success: function(response) {
             console.log(response);
             $("#accountNumber").html(response.accountInfo.accountNumber);
-            $("#startDat").html(start);
-            $("#endDat").html(end);
+            $("#startDat").html(convertTime(start));
+            $("#endDat").html(convertTime(end));
             $("#customerId").html(response.accountInfo.customer.id);
             $("#accountHolderName").html(response.accountInfo.customer.customerName);
-            $("#accountHolderAddressHouse").html(response.accountInfo.customer.address);
+            var home = response.accountInfo.customer.address.split(",")[0];
+            var area = response.accountInfo.customer.address.split(",")[1];
+            var city = response.accountInfo.customer.address.split(",")[2];
+            var postCode = response.accountInfo.customer.address.split(",")[3];
+            $("#accountHolderAddressHouse").html(home + ",");
+            $("#accountHolderAddressRoad").html(area + ",");
+            $("#accountHolderAddressArea").html(city + ",");
+            $("#accountHolderPostCode").html(postCode);
 
         },
         error: function(response) {
