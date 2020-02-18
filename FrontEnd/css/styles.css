@@ -80,7 +80,8 @@ input.form-control {
 
 .navbar-custom {
   background: #222;
-  height: 60px; }
+  height: auto;
+ }
 
 .navbar-header .navbar-brand {
   color: #fff;
