@@ -15,6 +15,11 @@ class StatementRouter extends Router {
                 "/",
                 this.statementController.createAccountStatement,
             );
+
+            this.router.get(
+                "/:tx_hash",
+                this.statementController.getStatementByTxHash,
+            );
         } catch (error) {
             console.error(error);
             throw error;

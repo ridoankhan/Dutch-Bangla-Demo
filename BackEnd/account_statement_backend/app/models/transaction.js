@@ -5,7 +5,7 @@ class Transaction extends Sequelize.Model {
         this.model = super.init(
             {
                 date: {
-                    type: Sequelize.DATE,
+                    type: Sequelize.STRING,
                     allowNull: false,
                 },
                 brn: {

@@ -4,20 +4,31 @@ const StatementService = require("../services/account-statement-service.js");
 class AccountStatement {
     constructor() {
         this.statementService = new StatementService();
+
+        this.createAccountStatement = this.createAccountStatement.bind(this);
+        this.getStatementByTxHash = this.getStatementByTxHash.bind(this);
     }
 
     async createAccountStatement(req, res, next) {
         try {
-            await this.statementService.createNew;
+            consola.info("AccountStatement.createAccountStatement()");
+            await this.statementService.createNew(req);
+            res.status(201).json({ message: "Account satetment created." });
         } catch (error) {
             console.error(error);
+            res.status(500).json(error);
         }
     }
 
-    async getStatementById(req, res, next) {
+    async getStatementByTxHash(req, res, next) {
         try {
+            const statement = await this.statementService.findByTsHash(
+                req.params.tx_hash,
+            );
+            res.status(201).json(statement);
         } catch (error) {
             console.error(error);
+            res.status(500).json(error);
         }
     }
 
@@ -25,14 +36,6 @@ class AccountStatement {
         try {
         } catch (error) {
             console.error(error);
-        }
-    }
-
-    async getAccountBalanceByDate(accountId) {
-        try {
-        } catch (error) {
-            consola.error(error);
-            throw error;
         }
     }
 }

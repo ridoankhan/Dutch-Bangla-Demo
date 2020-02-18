@@ -34,10 +34,7 @@ class RootRouter extends Router {
             this.router.use("/account", this.accountRoute.getRouter());
             this.router.use("/customer", this.customerRoute.getRouter());
             this.router.use("/transaction", this.transactionRoute.getRouter());
-            this.router.use(
-                "/account-statement",
-                this.statementRoute.getRouter(),
-            );
+            this.router.use("/statement", this.statementRoute.getRouter());
             this.router.use((req, res) => {
                 res.status(404).json({
                     msg: "no route found",

@@ -9,11 +9,11 @@ class AccountController {
 
     async findByCustomerNumber(req, res, next) {
         try {
-            const accountNumber = await this.accountService.getAccountByCustomerId(
+            const account = await this.accountService.getAccountByCustomerId(
                 req.params.customerId,
             );
 
-            res.status(201).json({ accountNumber: accountNumber });
+            res.status(201).json({ accountInfo: account });
         } catch (error) {
             consola.error(error);
             res.status(500).json(error);
