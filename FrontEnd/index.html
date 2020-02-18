@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>DBBL BankChain</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
     <link href="./css/bootstrap.min.css" rel="stylesheet">
     <link href="./css/font-awesome.min.css" rel="stylesheet">
     <link href="./css/datepicker3.css" rel="stylesheet">
@@ -64,7 +65,7 @@
         <div class="col-sm-12 col-lg-9 col-md-12">
 
             <div>
-                <div class="card-body" style="background-color: rgb(255, 255, 255); min-height: 70vw; color: rgb(0, 0, 0); padding-top: 5vw; font-family: serif; font-size: .8vw; padding-left: 5vw; padding-right: 5vw; line-height: .7vw;">
+                <div class="card-body" style="background-color: rgb(255, 255, 255); min-height: 70vw; color: rgb(0, 0, 0); padding-top: 5vw; font-family: serif; font-size: .8vw; padding-left: 5vw; padding-right: 5vw; line-height: .7vw; height: 100%;">
                     <!-- row 1 -->
                     <div class="row" style="padding-bottom: 1vw;">
 
@@ -77,7 +78,7 @@
                             </div>
 
                             <!-- row 1 : col 2/2 -->
-                            <div class="col-sm-8">
+                            <div class="col-sm-8" style="line-height: 0.8vw;">
                                 <span id="bankName">Dutch-Bangla Bank Limited</span><br>
                                 <span id="bankBranchName">Shatmasjid Road Branch</span><br>
                                 <span id="bankBranchAddressRoad">Plot # 47, Road # 9/A,</span><br>
@@ -96,7 +97,7 @@
                         <div>
 
                             <!-- row 2 : col 1/3 -->
-                            <div class="col-sm-3" style="text-transform: uppercase; font-size: .7vw;">
+                            <div class="col-sm-3" style="text-transform: uppercase; font-size: .7vw;line-height:10px;">
                                 <span id="accountHolderName">Account Holder</span><br>
                                 <span id="accountHolderAddressHouse">Holder House Address</span><br>
                                 <span id="accountHolderAddressRoad">Holder Area, Sub Area</span><br>
@@ -111,20 +112,20 @@
 
                             <!-- row 2 : col 3/3 -->
                             <div class="col-sm-5">
-                                <table>
+                                <table style="line-height:10px;">
                                     <tbody>
                                         <tr>
                                             <td style="padding-right: 1vw;">Account Number</td>
                                             <td style="padding-right: 1vw;"> : </td>
-                                            <td id="accountNumber">1234567</td>
+                                            <td id="accountNumber" id="">1234567</td>
                                         </tr>
                                         <tr>
                                             <td style="padding-right: 1vw;">Period Form</td>
                                             <td style="padding-right: 1vw;">:</td>
                                             <td id="timePeriod">
-                                                <span id="startDate">dd-mm-yy</span>
+                                                <span id="startDat">dd-mm-yy</span>
                                                 <span style="padding-left: .5vw; padding-right: .5vw;">-</span>
-                                                <span id="endDate">dd-mm-yy</span>
+                                                <span id="endDat">dd-mm-yy</span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -140,12 +141,12 @@
                                         <tr>
                                             <td style="padding-right: 1vw;">Branch Code</td>
                                             <td style="padding-right: 1vw;"> : </td>
-                                            <td id="currencyName">171</td>
+                                            <td id="branchCode">171</td>
                                         </tr>
                                         <tr>
                                             <td style="padding-right: 1vw;">Customer Id</td>
                                             <td style="padding-right: 1vw;"> : </td>
-                                            <td id="currencyName">54321</td>
+                                            <td id="customerId">54321</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -166,54 +167,19 @@
                                 <!-- row 3 col : 1/1 row 2/2 -->
                                 <div class="row">
                                     <table id="mainTable" class="table" style="font-size: .7vw;" role="grid">
-                                        <thead>
+                                        <thead class="myTableStyle">
                                             <tr style="height: .5vw; ">
-                                                <th id="transactionDate">TRN. &nbsp; DATE</th>
-                                                <th id="brn">BRN</th>
-                                                <th id="description">DESCRIPTIONS</th>
-                                                <th id="reference">REFERENCE</th>
-                                                <th id="debits">DEBITS</th>
-                                                <th id="credits">CREDITS</th>
-                                                <th id="balance">BALANCE</th>
+                                                <th>TRN. &nbsp; DATE</th>
+                                                <th>BRN</th>
+                                                <th>DESCRIPTIONS</th>
+                                                <th>REFERENCE</th>
+                                                <th>DEBITS</th>
+                                                <th>CREDITS</th>
+                                                <th>BALANCE</th>
                                             </tr>
                                         </thead>
                                         <tbody id="mainTableBody">
-                                            <tr>
-                                                <td>TRN. &nbsp; DATE</td>
-                                                <td>BRN</td>
-                                                <td>DESCRIPTIONS</td>
-                                                <td>REFERENCE</td>
-                                                <td>DEBITS</td>
-                                                <td>CREDITS</td>
-                                                <td>BALANCE</td>
-                                            </tr>
-                                            <tr>
-                                                <td>TRN. &nbsp; DATE</td>
-                                                <td>BRN</td>
-                                                <td>DESCRIPTIONS</td>
-                                                <td>REFERENCE</td>
-                                                <td>DEBITS</td>
-                                                <td>CREDITS</td>
-                                                <td>BALANCE</td>
-                                            </tr>
-                                            <tr>
-                                                <td>TRN. &nbsp; DATE</td>
-                                                <td>BRN</td>
-                                                <td>DESCRIPTIONS</td>
-                                                <td>REFERENCE</td>
-                                                <td>DEBITS</td>
-                                                <td>CREDITS</td>
-                                                <td>BALANCE</td>
-                                            </tr>
-                                            <tr>
-                                                <td>TRN. &nbsp; DATE</td>
-                                                <td>BRN</td>
-                                                <td>DESCRIPTIONS</td>
-                                                <td>REFERENCE</td>
-                                                <td>DEBITS</td>
-                                                <td>CREDITS</td>
-                                                <td>BALANCE</td>
-                                            </tr>
+
                                         </tbody>
                                     </table>
 
@@ -225,14 +191,14 @@
 
                     <!-- row 4 -->
                     <div class="row" style="font-size: .7vw;">
-                        <div >
+                        <div>
                             <!-- row 4 col : 1 -->
-                            <div class="col-sm-1" >
-                                
+                            <div class="col-sm-1">
+
                             </div>
                             <!-- row 4 col : 2 -->
-                            <div class="col-sm-9" >
-                                <span> STATEMENT CLOSING BALANCE </span>  <br>
+                            <div class="col-sm-9">
+                                <span> <br> STATEMENT CLOSING BALANCE </span> <br>
                                 <div class="row" style="margin-left: 1vw;">
                                     <table>
                                         <tr>
@@ -244,21 +210,21 @@
                                             <td id="finalDebits" style="float: right;padding-left: 2vw;">456789</td>
                                             <td style="padding-left: 2vw;">DRCOUNT</td>
                                             <td id="drCount" style="padding-left: 2vw;">20</td>
-                                            
+
                                         </tr>
                                         <tr>
                                             <td style=" padding-right: 3vw;">CREDITS</td>
-                                            <td id="finalDebits" style="float: right;padding-left: 2vw;">987654</td>
+                                            <td id="finalCredits" style="float: right;padding-left: 2vw;">987654</td>
                                             <td style="padding-left: 2vw; position: relative;">CRCOUNT</td>
                                             <td id="crCount" style="padding-left: 2vw;">35</td>
-                                            
+
                                         </tr>
-                                        <tr >
+                                        <tr>
                                             <td style=" padding-right: 3vw;">UNCOLLECTED FUNDS</td>
                                             <td id="uncollectedFunds" style="float: right;padding-left: 2vw;">0.00</td>
                                         </tr>
-                                        <tr >
-                                            <td style="padding-top: 1vw;">* &nbsp; = &nbsp;  UNAUTH ENTRY &nbsp; / &nbsp; R &nbsp; = &nbsp; REVERSAL</td>
+                                        <tr>
+                                            <td style="padding-top: 1vw;">* &nbsp; = &nbsp; UNAUTH ENTRY &nbsp; / &nbsp; R &nbsp; = &nbsp; REVERSAL</td>
                                         </tr>
                                     </table>
                                 </div>
@@ -270,7 +236,7 @@
 
                     <!-- row 5 -->
                     <div class="row">
-                        <div >
+                        <div>
 
                             <div class="col-sm-12" style="padding-top: 2vw;">
                                 Please note that any dispency must be notified to the bank within 15 days from the date of this statement.Else it will be deemed <br> that the customer has found this statement is corret.
@@ -290,6 +256,7 @@
 
         <script src="./js/jquery-3.2.1.min.js"></script>
         <script src="./js/jquery-ui.js"></script>
+        <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
         <script src="./js/bootstrap.js"></script>
         <script src="./js/bootstrap.min.js"></script>
         <script src="./js/chart.min.js"></script>
