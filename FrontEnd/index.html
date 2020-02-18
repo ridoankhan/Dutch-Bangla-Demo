@@ -11,8 +11,7 @@
     <link href="./css/styles.css" rel="stylesheet">
     <link href="./css/jquery-ui.css" rel="stylesheet">
     <link href="./assets/css/style.css" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 </head>
 
 <body>
@@ -31,44 +30,40 @@
 
         <!-- side bar -->
         <div class="col-sm-3 col-lg-3 col-md-3">
-            
-                <div  style="background-color: rgb(255, 255, 255); padding: 1vw;">
-                    <img src="./img/1200px-DBBL.jpg" class="img-responsive "
-                        alt="DBBL LOGO" style="width: 13vw; height: 5vw;">
-                    <div class="form-group navbar navbar-custom navbar-fixed" style="background-color: white;">
 
-                        <label>Customer Number</label>
-                        <input type="number" id="customerNumberTextbox" class="form-control" placeholder="Customer No.">
-                        <br />
-                        <label>From</label>
-                        <br />
-                        <input type="date" id="startDate" class="form-control">
+            <div style="background-color: rgb(255, 255, 255); padding: 1vw; position: fixed; width: 24%; height: 100%;">
+                <img src="./img/1200px-DBBL.jpg" class="img-responsive " alt="DBBL LOGO" style="width: 13vw; height: 5vw;">
+                <div class="form-group navbar navbar-custom navbar-fixed" style="background-color: white;">
 
-                        <br>
-                        <label>To</label>
-                        <br />
-                        <input type="date" id="endDate" class="form-control">
-                        <br />
+                    <label>Customer Number</label>
+                    <input type="number" id="customerNumberTextbox" class="form-control" placeholder="Customer No.">
+                    <br />
+                    <label>From</label>
+                    <br />
+                    <input type="date" id="startDate" class="form-control">
+
+                    <br>
+                    <label>To</label>
+                    <br />
+                    <input type="date" id="endDate" class="form-control">
+                    <br />
 
 
-                        <div class="form-group">
-                            <button type="button" id="showAccountbtn" class="btn btn-primary btn-block"
-                                style="visibility:visible;   font-weight: bold;"> Show Account </button>
-                            <button type="button" id="CreateCon" class="btn btn-primary btn-block"
-                                style="visibility:hidden;    font-weight: bold;"> Create </button>
-                            <button type="button" id="createPdfbtn" class="btn btn-primary btn-block"
-                                style="visibility:hidden;    font-weight: bold;"> Create PDF </button>
-                        </div>
-
+                    <div class="form-group">
+                        <button type="button" id="showAccountbtn" class="btn btn-primary btn-block" style="visibility:visible;   font-weight: bold;"> Show Account </button>
+                        <button type="button" id="CreateCon" class="btn btn-primary btn-block" style="visibility:hidden;    font-weight: bold;"> Create </button>
+                        <button type="button" id="createPdfbtn" class="btn btn-primary btn-block" style="visibility:hidden;    font-weight: bold;"> Create PDF </button>
                     </div>
+
                 </div>
+            </div>
 
         </div>
 
         <!-- Statement  -->
         <div class="col-sm-12 col-lg-9 col-md-12">
 
-            <div >
+            <div>
                 <div class="card-body" style="background-color: rgb(255, 255, 255); min-height: 70vw; color: rgb(0, 0, 0); padding-top: 5vw; font-family: serif; font-size: .8vw; padding-left: 5vw; padding-right: 5vw; line-height: .7vw;">
                     <!-- row 1 -->
                     <div class="row" style="padding-bottom: 1vw;">
@@ -87,8 +82,8 @@
                                 <span id="bankBranchName">Shatmasjid Road Branch</span><br>
                                 <span id="bankBranchAddressRoad">Plot # 47, Road # 9/A,</span><br>
                                 <span id="BankBranchAddressArea">Dhanmondi R/A</span><br>
-                                <span id="BankBranchAddressCity">Dhaka-<span id="addressPostCode">1209 </span>,
-                                    Bangladesh</span>
+                                <span id="BankBranchAddressCity">Dhaka-<span id="addressPostCode">1209 </span>, Bangladesh
+                                </span>
                             </div>
 
                         </div>
@@ -169,55 +164,55 @@
                                 <div class="row" style="padding-left: 11.5vw; padding-bottom: .2vw; font-size: .7vw;">
                                     ONLINE STATEMENT</div>
                                 <!-- row 3 col : 1/1 row 2/2 -->
-                                <div class="row" >
+                                <div class="row">
                                     <table id="mainTable" class="table" style="font-size: .7vw;" role="grid">
                                         <thead>
                                             <tr style="height: .5vw; ">
-                                                <th >TRN. &nbsp; DATE</th>
-                                                <th >BRN</th>
-                                                <th >DESCRIPTIONS</th>
-                                                <th >REFERENCE</th>
-                                                <th >DEBITS</th>
-                                                <th >CREDITS</th>
-                                                <th >BALANCE</th>
+                                                <th>TRN. &nbsp; DATE</th>
+                                                <th>BRN</th>
+                                                <th>DESCRIPTIONS</th>
+                                                <th>REFERENCE</th>
+                                                <th>DEBITS</th>
+                                                <th>CREDITS</th>
+                                                <th>BALANCE</th>
                                             </tr>
                                         </thead>
                                         <tbody id="mainTableBody">
-                                            <tr>    
-                                                <td >TRN. &nbsp; DATE</td>
-                                                <td >BRN</td>
-                                                <td >DESCRIPTIONS</td>
-                                                <td >REFERENCE</td>
-                                                <td >DEBITS</td>
-                                                <td >CREDITS</td>
-                                                <td >BALANCE</td>
+                                            <tr>
+                                                <td>TRN. &nbsp; DATE</td>
+                                                <td>BRN</td>
+                                                <td>DESCRIPTIONS</td>
+                                                <td>REFERENCE</td>
+                                                <td>DEBITS</td>
+                                                <td>CREDITS</td>
+                                                <td>BALANCE</td>
                                             </tr>
-                                            <tr>    
-                                                <td >TRN. &nbsp; DATE</td>
-                                                <td >BRN</td>
-                                                <td >DESCRIPTIONS</td>
-                                                <td >REFERENCE</td>
-                                                <td >DEBITS</td>
-                                                <td >CREDITS</td>
-                                                <td >BALANCE</td>
+                                            <tr>
+                                                <td>TRN. &nbsp; DATE</td>
+                                                <td>BRN</td>
+                                                <td>DESCRIPTIONS</td>
+                                                <td>REFERENCE</td>
+                                                <td>DEBITS</td>
+                                                <td>CREDITS</td>
+                                                <td>BALANCE</td>
                                             </tr>
-                                            <tr>    
-                                                <td >TRN. &nbsp; DATE</td>
-                                                <td >BRN</td>
-                                                <td >DESCRIPTIONS</td>
-                                                <td >REFERENCE</td>
-                                                <td >DEBITS</td>
-                                                <td >CREDITS</td>
-                                                <td >BALANCE</td>
+                                            <tr>
+                                                <td>TRN. &nbsp; DATE</td>
+                                                <td>BRN</td>
+                                                <td>DESCRIPTIONS</td>
+                                                <td>REFERENCE</td>
+                                                <td>DEBITS</td>
+                                                <td>CREDITS</td>
+                                                <td>BALANCE</td>
                                             </tr>
-                                            <tr>    
-                                                <td >TRN. &nbsp; DATE</td>
-                                                <td >BRN</td>
-                                                <td >DESCRIPTIONS</td>
-                                                <td >REFERENCE</td>
-                                                <td >DEBITS</td>
-                                                <td >CREDITS</td>
-                                                <td >BALANCE</td>
+                                            <tr>
+                                                <td>TRN. &nbsp; DATE</td>
+                                                <td>BRN</td>
+                                                <td>DESCRIPTIONS</td>
+                                                <td>REFERENCE</td>
+                                                <td>DEBITS</td>
+                                                <td>CREDITS</td>
+                                                <td>BALANCE</td>
                                             </tr>
                                         </tbody>
                                     </table>
