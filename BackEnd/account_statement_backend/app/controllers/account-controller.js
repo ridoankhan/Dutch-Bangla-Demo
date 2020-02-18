@@ -1,9 +1,23 @@
-class AccountController {
-    constructor() {}
+const consola = require("consola");
+const AccountService = require("../services/account-service.js");
 
-    async createAccount(req, res, next) {
+class AccountController {
+    constructor() {
+        this.accountService = new AccountService();
+        this.findByCustomerNumber = this.findByCustomerNumber.bind(this);
+    }
+
+    async findByCustomerNumber(req, res, next) {
         try {
-        } catch (error) {}
+            const account = await this.accountService.getAccountByCustomerId(
+                req.params.customerId,
+            );
+
+            res.status(201).json({ accountInfo: account });
+        } catch (error) {
+            consola.error(error);
+            res.status(500).json(error);
+        }
     }
 }
 

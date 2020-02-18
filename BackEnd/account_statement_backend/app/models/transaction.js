@@ -9,7 +9,7 @@ class Transaction extends Sequelize.Model {
                     allowNull: false,
                 },
                 brn: {
-                    type: Sequelize.STRING,
+                    type: Sequelize.INTEGER,
                     allowNull: false,
                 },
                 description: {
@@ -18,14 +18,17 @@ class Transaction extends Sequelize.Model {
                 },
                 reference: {
                     type: Sequelize.STRING,
-                    allowNull: false,
                 },
                 credit: {
-                    type: Sequelize.STRING,
+                    type: Sequelize.INTEGER,
                     allowNull: false,
                 },
                 debit: {
-                    type: Sequelize.STRING,
+                    type: Sequelize.INTEGER,
+                    allowNull: false,
+                },
+                balance: {
+                    type: Sequelize.INTEGER,
                     allowNull: false,
                 },
             },
