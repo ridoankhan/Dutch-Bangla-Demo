@@ -1,5 +1,5 @@
 $("#CreateCon").click(function() {
-
+    var txHash = '';
     var obj = {
 
         accountName: $("#accountHolderName").html(),
@@ -24,7 +24,18 @@ $("#CreateCon").click(function() {
 
             obj.nonce = nonce;
 
-            console.log("Aita holo amader Obj", obj);
+            // console.log("Aita holo amader Obj", obj);
+            function genarateQR() {
+                return new QRCode("qrcode", {
+                    text: " http://127.0.0.1:9091/statement/" +
+                        txHash,
+                    width: $(this).width() / 10,
+                    height: $(this).width() / 10,
+                    colorDark: "#000000",
+                    colorLight: "#FFFFFF",
+                    correctLevel: QRCode.CorrectLevel.H
+                });
+            }
 
             $.ajax({
                 type: 'post',
@@ -33,7 +44,8 @@ $("#CreateCon").click(function() {
                 data: JSON.stringify(obj),
                 success: function(response) {
                     console.log(response);
-
+                    txHash = response;
+                    genarateQR();
                 },
                 error: function(err) {
                     console.log(err);

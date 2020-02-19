@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>DBBL BankChain</title>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="./assets/css/dataTable.min.css">
     <link href="./css/bootstrap.min.css" rel="stylesheet">
     <link href="./css/font-awesome.min.css" rel="stylesheet">
     <link href="./css/datepicker3.css" rel="stylesheet">
@@ -88,6 +88,10 @@
                                 </span>
                             </div>
 
+                            <div id="qrcode" class="d-flex justify-content-center" style="float: right; margin-right: 5vw;">
+
+                            </div>
+
                         </div>
 
                     </div>
@@ -167,7 +171,7 @@
                                     ONLINE STATEMENT</div>
                                 <!-- row 3 col : 1/1 row 2/2 -->
                                 <div>
-                                    <table id="mainTable" class="table" style="font-size: .7vw;" role="grid">
+                                    <table id="mainTable" class="table dataTable" style="font-size: .7vw;" role="grid">
                                         <thead class="myTableStyle">
                                             <tr style="height: .5vw; ">
                                                 <th>TRN. &nbsp; DATE</th>
@@ -276,7 +280,8 @@
 
         <script src="./js/jquery-3.2.1.min.js"></script>
         <script src="./js/jquery-ui.js"></script>
-        <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+        <script src="./js/dataTable.min.js"></script>
+        <script type="text/javascript" src="assets/plugins/qr/qrcode.min.js"></script>
         <script src="./js/bootstrap.js"></script>
         <script src="./js/bootstrap.min.js"></script>
         <script src="./js/chart.min.js"></script>
@@ -286,7 +291,6 @@
         <script src="./js/bootstrap-datepicker.js"></script>
         <script src="./js/custom.js"></script>
         <script src="./js/style.js"></script>
-        <script src="./app.js"></script>
         <script src="./js/qrcode.js"></script>
         <script src="./js/html2canvas.js"></script>
         <script src="./js/jspdf.min.js"></script>
