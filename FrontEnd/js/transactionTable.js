@@ -78,6 +78,9 @@ $("#showAccountbtn").click(function() {
             $("#openingBalanceFinal").html(response.accountOpeningBalance + ".00");
             $("#drCount").html(drCount);
             $("#crCount").html(crCount);
+            let endingStatement = (response.accountOpeningBalance + totalCredit) - totalDebit;
+            $("#endingStatement").html(endingStatement.toString() + ".00");
+
 
             $("#mainTable").DataTable({
                 "paging": false,

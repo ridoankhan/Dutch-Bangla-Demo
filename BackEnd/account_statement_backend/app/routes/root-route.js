@@ -5,6 +5,7 @@ const AccountRoute = require("./account-route.js");
 const CustomerRoute = require("./customer-route.js");
 const StatementRoute = require("./statement-route.js");
 const TransactionRoute = require("./transaction-route.js");
+// const AuthenticationRoute = require("./authentication.routes.js");
 
 class RootRouter extends Router {
     constructor() {
@@ -24,6 +25,7 @@ class RootRouter extends Router {
             this.customerRoute = new CustomerRoute();
             this.statementRoute = new StatementRoute();
             this.transactionRoute = new TransactionRoute();
+            //this.authenticationRoute = new AuthenticationRoute();
         } catch (error) {
             consola.error(error);
         }
