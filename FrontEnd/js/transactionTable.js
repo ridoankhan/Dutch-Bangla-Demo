@@ -5,6 +5,7 @@ let totalDebit = 0;
 let totalCredit = 0;
 let drCount = 0;
 let crCount = 0;
+let endingStatement = 0;
 
 function convertMonth(mon) {
     var mnth = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
@@ -47,38 +48,43 @@ $("#showAccountbtn").click(function() {
         data: customerInfo,
         dataType: "json",
         success: function(response) {
+            console.log(">>>>>>>>Response<<<<<<<<<<");
+            console.log(response);
 
-            for (let i = 0; i < response.transactions.length; i++) {
-                if (response.transactions[i].debit > 0) {
-                    totalDebit = totalDebit + response.transactions[i].debit;
+
+
+            for (let i = 0; i < response.accountInfo.length; i++) {
+                if (response.accountInfo[i].debit > 0) {
+                    totalDebit = totalDebit + response.accountInfo[i].debit;
                     drCount += 1;
                 }
-                // console.log(response.transactions[i].debit);
+                // console.log(response.accountInfo[i].debit);
 
-                response.transactions[i].debit = (response.transactions[i].debit.toString()) + ".00";
+                response.accountInfo[i].debit = (response.accountInfo[i].debit.toString()) + ".00";
 
-                if (response.transactions[i].credit > 0) {
-                    totalCredit = totalCredit + response.transactions[i].credit;
+                if (response.accountInfo[i].credit > 0) {
+                    totalCredit = totalCredit + response.accountInfo[i].credit;
                     crCount += 1;
                 }
-                response.transactions[i].credit = (response.transactions[i].credit.toString()) + ".00";
+                response.accountInfo[i].credit = (response.accountInfo[i].credit.toString()) + ".00";
 
-                if (response.transactions[i].reference == "NULL") {
-                    response.transactions[i].reference = '';
+                if (response.accountInfo[i].reference == "NULL") {
+                    response.accountInfo[i].reference = '';
                 }
 
-                response.transactions[i].date = convertTime(response.transactions[i].date);
+                response.accountInfo[i].date = convertTime(response.accountInfo[i].date);
+                endingStatement = response.accountInfo[response.accountInfo.length - 1].balance;
+                response.accountInfo[i].balance = (response.accountInfo[i].balance.toString()) + ".00";
 
-                response.transactions[i].balance = (response.transactions[i].balance.toString()) + ".00";
 
             }
+            response.accountInfo[0].debit = '';
 
             $("#finalDebits").html(totalDebit.toString() + ".00");
             $("#finalCredits").html(totalCredit.toString() + ".00");
-            $("#openingBalanceFinal").html(response.accountOpeningBalance + ".00");
+            $("#openingBalanceFinal").html(response.accountInfo[0].balance);
             $("#drCount").html(drCount);
             $("#crCount").html(crCount);
-            let endingStatement = (response.accountOpeningBalance + totalCredit) - totalDebit;
             $("#endingStatement").html(endingStatement.toString() + ".00");
 
 
@@ -87,7 +93,7 @@ $("#showAccountbtn").click(function() {
                 searching: false,
                 "info": false,
                 "ordering": false,
-                data: response.transactions,
+                data: response.accountInfo,
                 columns: [{
                     'data': 'date'
                 }, {

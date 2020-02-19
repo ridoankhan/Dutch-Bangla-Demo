@@ -10,7 +10,7 @@ class TransactionService {
 
     async findAccountInfoByDateRange({ customerId, startDate, endDate }) {
         try {
-            startDate += " 23:59;59";
+            startDate += " 23:59:59";
             endDate += " 23:59:59";
 
             const accountId = await this.accountService.getAccountIdByCustomerNumber(
@@ -103,7 +103,7 @@ class TransactionService {
             consola.info(typeof accOpeningDate);
 
             const balance = await Transaction.sequelize.query(
-                `SELECT balance
+                `SELECT balance, date
                 FROM Transaction
                 WHERE accountId = :selectedAccId
                 AND
@@ -115,12 +115,18 @@ class TransactionService {
                     type: QueryTypes.SELECT,
                 },
             );
+            consola.info(balance);
             if (balance.length > 0) {
                 return {
-                    date: date,
+                    id: null,
+                    date: balance[balance.length - 1].date,
+                    brn: null,
                     description: "Opening Balance",
-                    credits: balance[balance.length - 1].balance,
+                    reference: '',
+                    credit: balance[balance.length - 1].balance,
+                    debit: 0,
                     balance: balance[balance.length - 1].balance,
+                    accountId: accountId
                 };
             }
             throw new Error("No transaction found within given date range.");
