@@ -127,6 +127,7 @@ $("#showAccountbtn").click(function() {
 
 
                     $("#showAccountbtn").attr("style", "visibility: hidden");
+                    $('#statement').attr("style", "visibility: visible");
                     $("#CreateCon").attr("style", "visibility: visible");
                     
                 },
