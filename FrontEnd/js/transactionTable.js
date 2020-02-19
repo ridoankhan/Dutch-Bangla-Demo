@@ -1,10 +1,10 @@
-var id ;
-var start ;
-var end ;
-var totalDebit = 0;
-var totalCredit = 0;
-var drCount = 0;
-var crCount = 0;
+let customerId;
+let start;
+let end;
+let totalDebit = 0;
+let totalCredit = 0;
+let drCount = 0;
+let crCount = 0;
 
 function convertMonth(mon) {
     var mnth = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
@@ -29,13 +29,12 @@ $("#showAccountbtn").click(function() {
 
 
 
-     id = $("#customerNumberTextbox").val();
-     start = $("#startDate").val();
-     end = $("#endDate").val();
-    // console.log(id, start, end);
+    customerId = $("#customerNumberTextbox").val();
+    start = $("#startDate").val();
+    end = $("#endDate").val();
 
     let customerInfo = {
-        customerId: id,
+        customerId: customerId,
         startDate: start,
         endDate: end
     };
@@ -49,15 +48,17 @@ $("#showAccountbtn").click(function() {
         dataType: "json",
         success: function(response) {
 
-            for (var i = 0; i < response.transactions.length; i++) {
-                totalDebit = totalDebit + response.transactions[i].debit;
+            for (let i = 0; i < response.transactions.length; i++) {
                 if (response.transactions[i].debit > 0) {
+                    totalDebit = totalDebit + response.transactions[i].debit;
                     drCount += 1;
                 }
+                // console.log(response.transactions[i].debit);
+
                 response.transactions[i].debit = (response.transactions[i].debit.toString()) + ".00";
 
-                totalCredit = totalCredit + response.transactions[i].credit;
                 if (response.transactions[i].credit > 0) {
+                    totalCredit = totalCredit + response.transactions[i].credit;
                     crCount += 1;
                 }
                 response.transactions[i].credit = (response.transactions[i].credit.toString()) + ".00";
@@ -136,6 +137,4 @@ $("#showAccountbtn").click(function() {
 
         }
     });
-
-    
 });

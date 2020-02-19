@@ -54,9 +54,10 @@ class TransactionService {
 
             let transactions = await Transaction.sequelize.query(
                 `SELECT * from Transaction
-                WHERE accountId = 1
+                WHERE accountId = :currAccId
                 AND date BETWEEN :start and :end`, {
                     replacements: {
+                        currAccId: accountId,
                         start: startDate,
                         end: endDate,
                     },
