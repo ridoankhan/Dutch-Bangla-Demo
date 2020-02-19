@@ -78,6 +78,9 @@ $("#showAccountbtn").click(function() {
             $("#openingBalanceFinal").html(response.accountOpeningBalance + ".00");
             $("#drCount").html(drCount);
             $("#crCount").html(crCount);
+            let endingStatement = (response.accountOpeningBalance + totalCredit) - totalDebit;
+            $("#endingStatement").html(endingStatement.toString() + ".00");
+
 
             $("#mainTable").DataTable({
                 "paging": false,
@@ -123,6 +126,7 @@ $("#showAccountbtn").click(function() {
             var area = response.accountInfo.customer.address.split(",")[1];
             var city = response.accountInfo.customer.address.split(",")[2];
             var postCode = response.accountInfo.customer.address.split(",")[3];
+
             $("#accountHolderAddressHouse").html(home + ",");
             $("#accountHolderAddressRoad").html(area + ",");
             $("#accountHolderAddressArea").html(city + ",");
