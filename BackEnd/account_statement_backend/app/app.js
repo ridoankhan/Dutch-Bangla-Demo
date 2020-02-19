@@ -18,8 +18,10 @@ class App {
         try {
             this.app.use(cors());
             this.app.use(helmet());
-            this.app.use(bodyParser.json());
-            this.app.use(bodyParser.urlencoded({ extended: true }));
+            this.app.use(bodyParser.json({ limit: "10kb" }));
+            this.app.use(
+                bodyParser.urlencoded({ limit: "10kb", extended: true }),
+            );
 
             await this.router.configureRoutes();
             await this.dbConfigurator.configure();
