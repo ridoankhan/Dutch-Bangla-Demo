@@ -10,10 +10,9 @@ class TransactionService {
 
     async findAccountInfoByDateRange({ customerId, startDate, endDate }) {
         try {
-            consola.info("TransactionService.findAccountInfoByDateRange");
-            consola.info(`customerId: ${customerId}`);
-            consola.info(`startDate: ${startDate}`);
-            consola.info(`endDate: ${endDate}`);
+            startDate += ' 23:59;59';
+            endDate += ' 23:59:59';
+
             const accountId = await this.accountService.getAccountIdByCustomerNumber(
                 customerId,
             );
@@ -55,10 +54,16 @@ class TransactionService {
 
             let transactions = await Transaction.sequelize.query(
                 `SELECT * from Transaction
+<<<<<<< HEAD
                 WHERE accountId = 1
                 AND date BETWEEN :start and :end`,
                 {
+=======
+                WHERE accountId = :currAccId
+                AND date BETWEEN :start and :end`, {
+>>>>>>> da08de64e58c39aa7c383b0036b5bfefeb64de15
                     replacements: {
+                        currAccId: accountId,
                         start: startDate,
                         end: endDate,
                     },
