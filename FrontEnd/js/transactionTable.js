@@ -107,7 +107,7 @@ $("#showAccountbtn").click(function() {
 
             $.ajax({
                 type: "GET",
-                url: "http://127.0.0.1:9091/account/" + id,
+                url: "http://127.0.0.1:9091/account/" + customerId,
                 dataType: "json",
                 success: function(response) {
                     console.log(response);
