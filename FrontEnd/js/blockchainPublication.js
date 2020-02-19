@@ -46,9 +46,13 @@ $("#CreateCon").click(function() {
                 success: function(response) {
                     console.log(response);
 
-                    $('#rowLoader').html("<h1>Data Successfully Published in Blockchain</h1>");
+                    $('#rowLoader').html("<h2>Data Successfully Published in Blockchain</h2>");
                     txHash = response;
                     genarateQR();
+                    $("#CreateCon").attr("style", "visibility: hidden");
+                    $("#createPdfbtn").attr("style", "visibility: visible");
+
+
                 },
                 error: function(err) {
                     console.log(err);
