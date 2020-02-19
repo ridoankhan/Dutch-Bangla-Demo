@@ -39,7 +39,7 @@ $("#showAccountbtn").click(function() {
         startDate: start,
         endDate: end
     };
-    console.log(customerInfo);
+    // console.log(customerInfo);
 
 
     $.ajax({
@@ -48,8 +48,7 @@ $("#showAccountbtn").click(function() {
         data: customerInfo,
         dataType: "json",
         success: function(response) {
-            console.log(">>>>>>>>Response<<<<<<<<<<");
-            console.log(response);
+            // console.log(response);
 
 
 
@@ -116,7 +115,7 @@ $("#showAccountbtn").click(function() {
                 url: "http://127.0.0.1:9091/account/" + customerId,
                 dataType: "json",
                 success: function(response) {
-                    console.log(response);
+                    // console.log(response);
                     $("#accountNumber").html(response.accountInfo.accountNumber);
                     $("#startDat").html(convertTime(start));
                     $("#endDat").html(convertTime(end));
@@ -134,15 +133,15 @@ $("#showAccountbtn").click(function() {
 
                     $("#showAccountbtn").attr("style", "visibility: hidden");
                     $("#CreateCon").attr("style", "visibility: visible");
-                    
+
                 },
                 error: function(response) {
-                    console.log(response);
+                    // console.log(response);
                 }
             });
         },
         error: function(response) {
-            console.log(response);
+            // console.log(response);
 
         }
     });
