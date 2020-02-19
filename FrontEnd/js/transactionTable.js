@@ -110,37 +110,40 @@ $("#showAccountbtn").click(function() {
                     'data': 'balance'
                 }]
             });
+
+            $.ajax({
+                type: "GET",
+                url: "http://127.0.0.1:9091/account/" + customerId,
+                dataType: "json",
+                success: function(response) {
+                    console.log(response);
+                    $("#accountNumber").html(response.accountInfo.accountNumber);
+                    $("#startDat").html(convertTime(start));
+                    $("#endDat").html(convertTime(end));
+                    $("#customerId").html(response.accountInfo.customer.id);
+                    $("#accountHolderName").html(response.accountInfo.customer.customerName);
+                    var home = response.accountInfo.customer.address.split(",")[0];
+                    var area = response.accountInfo.customer.address.split(",")[1];
+                    var city = response.accountInfo.customer.address.split(",")[2];
+                    var postCode = response.accountInfo.customer.address.split(",")[3];
+                    $("#accountHolderAddressHouse").html(home + ",");
+                    $("#accountHolderAddressRoad").html(area + ",");
+                    $("#accountHolderAddressArea").html(city + ",");
+                    $("#accountHolderPostCode").html(postCode);
+
+
+                    $("#showAccountbtn").attr("style", "visibility: hidden");
+                    $("#CreateCon").attr("style", "visibility: visible");
+                    
+                },
+                error: function(response) {
+                    console.log(response);
+                }
+            });
         },
         error: function(response) {
             console.log(response);
 
-        }
-    });
-
-    $.ajax({
-        type: "GET",
-        url: "http://127.0.0.1:9091/account/" + customerId,
-        dataType: "json",
-        success: function(response) {
-            console.log(response);
-            $("#accountNumber").html(response.accountInfo.accountNumber);
-            $("#startDat").html(convertTime(start));
-            $("#endDat").html(convertTime(end));
-            $("#customerId").html(response.accountInfo.customer.id);
-            $("#accountHolderName").html(response.accountInfo.customer.customerName);
-            var home = response.accountInfo.customer.address.split(",")[0];
-            var area = response.accountInfo.customer.address.split(",")[1];
-            var city = response.accountInfo.customer.address.split(",")[2];
-            var postCode = response.accountInfo.customer.address.split(",")[3];
-
-            $("#accountHolderAddressHouse").html(home + ",");
-            $("#accountHolderAddressRoad").html(area + ",");
-            $("#accountHolderAddressArea").html(city + ",");
-            $("#accountHolderPostCode").html(postCode);
-
-        },
-        error: function(response) {
-            console.log(response);
         }
     });
 });

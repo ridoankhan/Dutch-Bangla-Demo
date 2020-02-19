@@ -30,9 +30,9 @@
         </div>
 
         <!-- side bar -->
-        <div class="col-sm-3 col-lg-3 col-md-3">
+        <div class="col-sm-12 col-lg-3 col-md-3">
 
-            <div style="background-color: rgb(255, 255, 255); padding: 1vw; position: fixed; width: 24%; height: 100%;">
+            <div style="background-color: rgb(255, 255, 255); padding: 1vw; position: fixed; width: 24vw; height: 100%;">
                 <img src="./img/1200px-DBBL.jpg" class="img-responsive " alt="DBBL LOGO" style="width: 13vw; height: 5vw;">
                 <br/>
                 <div class="form-group navbar navbar-custom navbar-fixed" style="background-color: white;">
@@ -63,10 +63,10 @@
         </div>
 
         <!-- Statement  -->
-        <div class="col-sm-12 col-lg-9 col-md-12">
+        <div class="col-sm-9 col-lg-9 col-md-9">
 
             <div>
-                <div class="card-body" style="background-color: rgb(255, 255, 255); min-height: 70vw; color: rgb(0, 0, 0); padding-top: 5vw; font-family: serif; font-size: .8vw; padding-left: 5vw; padding-right: 5vw; line-height: .7vw; height: 100%;">
+                <div class="card-body" style="background-color: rgb(255, 255, 255); min-height: 70vw; color: rgb(0, 0, 0); padding-top: 5vw; font-family: serif; font-size: .8vw; padding-left: 15vw;  line-height: .7vw; height: 100%;">
                     <!-- row 1 -->
                     <div class="row" style="padding-bottom: 1vw;">
 
@@ -74,12 +74,12 @@
                         <div>
 
                             <!-- row 1 : col 1/2-->
-                            <div class="col-sm-2">
+                            <div class="col-sm-2 col-lg-2 col-md-2">
 
                             </div>
 
                             <!-- row 1 : col 2/2 -->
-                            <div class="col-sm-8" style="line-height: 15px;">
+                            <div class="col-sm-5 col-lg-5 col-md-5">
                                 <span id="bankName">Dutch-Bangla Bank Limited</span><br>
                                 <span id="bankBranchName">Shatmasjid Road Branch</span><br>
                                 <span id="bankBranchAddressRoad">Plot # 47, Road # 9/A,</span><br>
@@ -98,23 +98,23 @@
                         <div>
 
                             <!-- row 2 : col 1/3 -->
-                            <div class="col-sm-3" style="text-transform: uppercase; font-size: .7vw;line-height:15px;">
-                                <span id="accountHolderName"></span><br>
-                                <span id="accountHolderAddressHouse"></span><br>
-                                <span id="accountHolderAddressRoad"></span><br>
-                                <span id="accountHolderAddressArea"></span><br>
-                                <span id="accountHolderPostCode"></span>
+                            <div class="col-sm-3 col-lg-3 col-md-3" style="text-transform: uppercase; font-size: .7vw;">
+                                <span id="accountHolderName">Name</span><br>
+                                <span id="accountHolderAddressHouse">address</span><br>
+                                <span id="accountHolderAddressRoad">road address</span><br>
+                                <span id="accountHolderAddressArea">area</span><br>
+                                <span id="accountHolderPostCode">post code</span>
                             </div>
 
                             <!-- row 2 : col 2/3 -->
-                            <div class="col-sm-2">
+                            <div class="col-sm-2 col-lg-2 col-md-2">
                                 <!-- just for spacing -->
                             </div>
 
                             <!-- row 2 : col 3/3 -->
-                            <div class="col-sm-5">
+                            <div class="col-sm-5 col-lg-5 col-md-5">
                                 <table>
-                                    <tbody style="line-height: 15px;">
+                                    <tbody>
                                         <tr>
                                             <td style="padding-right: 1vw;">Account Number</td>
                                             <td style="padding-right: 1vw;"> : </td>
@@ -157,10 +157,10 @@
                     </div>
 
                     <!-- row 3 -->
-                    <div class="row">
+                    <div class="row col-sm-9 col-lg-9 col-md-9">
                         <div>
                             <!-- row 3 col : 1/1 -->
-                            <div class="col-sm-12">
+                            <div>
 
                                 <!-- row 3 col : 1/1 row 1/2 -->
                                 <div class="row" style="padding-left: 11.5vw; padding-bottom: .2vw; font-size: .7vw;">
@@ -176,7 +176,7 @@
                                                 <th>REFERENCE</th>
                                                 <th>DEBITS</th>
                                                 <th>CREDITS</th>
-                                                <th>BALANCE</th>
+                                                <th id="balanceColumn">BALANCE</th>
                                             </tr>
                                         </thead>
                                         <tbody id="mainTableBody">
@@ -185,13 +185,13 @@
                                         <br/>
                                         <tfoot>
                                             <tr>
-                                                <td class="col-md-3"></td>
-                                                <td class="col-md-3"></td>
-                                                <td class="col-md-3"></td>
-                                                <td class="col-md-3"></td>
-                                                <td class="col-md-3"></td>
-                                                <td class="col-md-3"></td>
-                                                <td class="col-md-3" id="endingStatement"></td>
+                                                <td class="col-sm-3 col-lg-2 col-md-2"></td>
+                                                <td class="col-sm-1 col-lg-1 col-md-1"></td>
+                                                <td class="col-sm-1 col-lg-1 col-md-1"></td>
+                                                <td class="col-sm-1 col-lg-1 col-md-1"></td>
+                                                <td class="col-sm-1 col-lg-1 col-md-1"></td>
+                                                <td class="col-sm-1 col-lg-1 col-md-1"></td>
+                                                <td class="col-sm-1 col-lg-1 col-md-1" id="endingStatement">testNUm</td>
 
                                             </tr>
                                         </tfoot>
@@ -199,38 +199,40 @@
 
                                 </div>
 
+
+
                             </div>
                         </div>
                     </div>
 
                     <!-- row 4 -->
-                    <div class="row" style="font-size: .7vw;">
+                    <div class="row col-sm-9 col-lg-9 col-md-9" style="font-size: .7vw;">
                         <div>
                             <!-- row 4 col : 1 -->
-                            <div class="col-sm-1">
+                            <div class="col-sm-2 col-lg-2 col-md-2">
 
                             </div>
                             <!-- row 4 col : 2 -->
-                            <div class="col-sm-9" style="line-height:15px;">
+                            <div class="col-sm-7 col-lg-7 col-md-7">
                                 <span> <br> STATEMENT CLOSING BALANCE </span> <br>
                                 <div class="row" style="margin-left: 1vw;">
                                     <table>
                                         <tr>
                                             <td style=" padding-right: 3vw;">OPENNING BANALNCE</td>
-                                            <td id="openingBalanceFinal" style="float: right;padding-left: 2vw;">123</td>
+                                            <td id="openingBalanceFinal" style="float: right;padding-left: 2vw;"></td>
                                         </tr>
                                         <tr>
                                             <td style=" padding-right: 3vw;">DEBITS</td>
-                                            <td id="finalDebits" style="float: right;padding-left: 2vw;">456789</td>
+                                            <td id="finalDebits" style="float: right;padding-left: 2vw;"></td>
                                             <td style="padding-left: 2vw;">DRCOUNT</td>
-                                            <td id="drCount" style="padding-left: 2vw;">20</td>
+                                            <td id="drCount" style="padding-left: 2vw;"></td>
 
                                         </tr>
                                         <tr>
                                             <td style=" padding-right: 3vw;">CREDITS</td>
-                                            <td id="finalCredits" style="float: right;padding-left: 2vw;">987654</td>
+                                            <td id="finalCredits" style="float: right;padding-left: 2vw;"></td>
                                             <td style="padding-left: 2vw; position: relative;">CRCOUNT</td>
-                                            <td id="crCount" style="padding-left: 2vw;">35</td>
+                                            <td id="crCount" style="padding-left: 2vw;"></td>
 
                                         </tr>
                                         <tr>
@@ -253,10 +255,10 @@
                     </div>
 
                     <!-- row 5 -->
-                    <div class="row">
+                    <div class="row col-sm-8 col-lg-8 col-md-8">
                         <div>
 
-                            <div class="col-sm-12 col-md-6" style="padding-top: 2vw;">
+                            <div>
                                 Please note that any dispency must be notified to the bank within 15 days from the date of this statement.Else it will be deemed <br> that the customer has found this statement is corret.
                             </div>
 
