@@ -10,10 +10,9 @@ class TransactionService {
 
     async findAccountInfoByDateRange({ customerId, startDate, endDate }) {
         try {
-            consola.info("TransactionService.findAccountInfoByDateRange");
-            consola.info(`customerId: ${customerId}`);
-            consola.info(`startDate: ${startDate}`);
-            consola.info(`endDate: ${endDate}`);
+            startDate += ' 23:59;59';
+            endDate += ' 23:59:59';
+
             const accountId = await this.accountService.getAccountIdByCustomerNumber(
                 customerId,
             );
