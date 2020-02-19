@@ -6,7 +6,7 @@ class AccountStatement {
         this.statementService = new StatementService();
 
         this.createAccountStatement = this.createAccountStatement.bind(this);
-        this.getStatementByTxHash = this.getStatementByTxHash.bind(this);
+        this.getStatementByTxId = this.getStatementByTxId.bind(this);
     }
 
     async createAccountStatement(req, res, next) {
@@ -20,10 +20,10 @@ class AccountStatement {
         }
     }
 
-    async getStatementByTxHash(req, res, next) {
+    async getStatementByTxId(req, res, next) {
         try {
             const statement = await this.statementService.findByTsHash(
-                req.params.tx_hash,
+                req.params.id,
             );
             res.status(201).json(statement);
         } catch (error) {

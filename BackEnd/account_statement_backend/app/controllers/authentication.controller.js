@@ -1,10 +1,9 @@
-const AuthService = require("../services/verifier.services.js");
 const consola = require("consola");
+const AuthService = require("../services/verifier.services.js");
 
 class AuthController {
     constructor() {
-        this.universityService = new UniversityService();
-        this.uniAuthorityService = new UniAuthorityService();
+        this.authService = new AuthService();
 
         //binding methods with object
         this.logIn = this.logIn.bind(this);
@@ -13,29 +12,26 @@ class AuthController {
 
     async register(req, res, next) {
         try {
-        } catch (error) {}
+            consola.info("AuthController.register()");
+            const message = await this.authService.registerNew(req.body);
+            res.status(210).json({ message: message });
+        } catch (error) {
+            console.log();
 
-        console.log("register");
-        this.uniAuthorityService
-            .registerNew(req)
-            .then(response => {
-                res.status(201).json(response);
-            })
-            .catch(err => {
-                console.log(err);
-                res.status(500).json(err);
-            });
+            consola.error(error);
+            res.status(500).json({ message: error.message });
+        }
     }
 
-    logIn(req, res, next) {
-        this.uniAuthorityService
-            .logIn(req)
-            .then(token => {
-                res.status(201).json({ token: token });
-            })
-            .catch(err => {
-                res.status(500).json(err);
-            });
+    async logIn(req, res, next) {
+        try {
+            consola.info("AuthController.logIn()");
+            const token = await this.authService.logIn(req.body);
+            res.status(201).json({ token });
+        } catch (error) {
+            consola.error(error);
+            res.status(500).json(error);
+        }
     }
 }
 
