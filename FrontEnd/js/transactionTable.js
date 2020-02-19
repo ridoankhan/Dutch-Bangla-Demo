@@ -1,6 +1,6 @@
-var id = $("#customerNumberTextbox").val();
-var start = $("#startDate").val();
-var end = $("#endDate").val();
+var id ;
+var start ;
+var end ;
 var totalDebit = 0;
 var totalCredit = 0;
 var drCount = 0;
@@ -28,6 +28,10 @@ function convertTime(time) {
 $("#showAccountbtn").click(function() {
 
 
+
+     id = $("#customerNumberTextbox").val();
+     start = $("#startDate").val();
+     end = $("#endDate").val();
     // console.log(id, start, end);
 
     let customerInfo = {
@@ -35,7 +39,7 @@ $("#showAccountbtn").click(function() {
         startDate: start,
         endDate: end
     };
-    // console.log(customerInfo);
+    console.log(customerInfo);
 
 
     $.ajax({
