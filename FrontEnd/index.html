@@ -53,7 +53,7 @@
 
                     <div class="form-group">
                         <button type="button" id="showAccountbtn" class="btn btn-primary btn-block" style="visibility:visible;   font-weight: bold;"> Show Account </button>
-                        <button type="button" id="CreateCon" class="btn btn-primary btn-block" style="visibility:hidden;    font-weight: bold;"> Create </button>
+                        <button type="button" id="CreateCon" class="btn btn-primary btn-block" style="visibility:hidden;    font-weight: bold;" > Create </button>
                         <button type="button" id="createPdfbtn" class="btn btn-primary btn-block" style="visibility:hidden;    font-weight: bold;"> Create PDF </button>
                     </div>
 
@@ -272,23 +272,53 @@
 
         </div>
 
+        <!-- Modal -->
+        <div class="modal fade" id="publishingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="modalTitleHead">Please Wait....</h5>
+                  
+                </div>
+                <div class="modal-body" style="height: 15vw;">
+                    <div class="row" style="height: 5vw;"></div>
+                    <div id="rowLoader" class="row text-center">
+                        <div class="col-md-3 bg">
+                            <div class="loader" id="loader-8"></div>
+                        </div>
+                        <div class="col-md-3 bg">
+                            <div class="loader" id="loader-8"></div>
+                        </div>
+                        <div class="col-md-3 bg">
+                            <div class="loader" id="loader-8"></div>
+                        </div>
+                        <div class="col-md-3 bg">
+                            <div class="loader" id="loader-8"></div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" id="closeModalbtn" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+        </div>
+        
+           
+        </div>
+        
+
 
 
         <script src="./js/jquery-3.2.1.min.js"></script>
         <script src="./js/jquery-ui.js"></script>
         <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-        <script src="./js/bootstrap.js"></script>
         <script src="./js/bootstrap.min.js"></script>
-        <script src="./js/chart.min.js"></script>
-        <script src="./js/chart-data.js"></script>
-        <script src="./js/easypiechart.js"></script>
-        <script src="./js/easypiechart-data.js"></script>
         <script src="./js/bootstrap-datepicker.js"></script>
         <script src="./js/custom.js"></script>
         <script src="./js/style.js"></script>
-        <script src="./app.js"></script>
         <script src="./js/qrcode.js"></script>
-        <script src="./js/html2canvas.js"></script>
         <script src="./js/jspdf.min.js"></script>
         <script src="./js/jspdf.plugin.autotable.js"></script>
         <script src="./js/bootstrap-filestyle.min.js"></script>

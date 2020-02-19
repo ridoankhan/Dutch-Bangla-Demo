@@ -1,5 +1,5 @@
 $("#CreateCon").click(function() {
-
+    $("#publishingModal").modal();
     var obj = {
 
         accountName: $("#accountHolderName").html(),
@@ -33,6 +33,8 @@ $("#CreateCon").click(function() {
                 data: JSON.stringify(obj),
                 success: function(response) {
                     console.log(response);
+
+                    $('#rowLoader').html("<h1>Data Successfully Published in Blockchain</h1>");
 
                 },
                 error: function(err) {
