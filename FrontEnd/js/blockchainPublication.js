@@ -29,8 +29,8 @@ $("#CreateCon").click(function() {
                 return new QRCode("qrcode", {
                     text: " http://127.0.0.1:9091/statement/" +
                         txHash,
-                    width: $(this).width() / 10,
-                    height: $(this).width() / 10,
+                    width: $(this).width() / 11,
+                    height: $(this).width() / 11,
                     colorDark: "#000000",
                     colorLight: "#FFFFFF",
                     correctLevel: QRCode.CorrectLevel.H
