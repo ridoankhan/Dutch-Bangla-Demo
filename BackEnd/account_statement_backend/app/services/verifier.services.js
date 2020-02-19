@@ -1,7 +1,8 @@
-const Bcrypt = require('../utils/bcrypt');
-const TokenHandler = require('../utils/jwt.js');
-
-const Verifier = require('../models/verifier.model.js');
+const consola = require("consola");
+const Bcrypt = require("../utils/bcrypt");
+const TokenHandler = require("../utils/jwt.js");
+const emailValidator = require("email-validator");
+const Verifier = require("../models/verifier.model.js");
 
 class VerifierService {
     constructor() {
@@ -13,85 +14,53 @@ class VerifierService {
         this.registerNew = this.registerNew.bind(this);
     }
 
-    registerNew(req) {
-        return new Promise((resolve, reject) => {
+    async registerNew({ name, email, password }) {
+        try {
+            consola.info("VerifierService.registerNew");
+            const hashedPassword = await this.bcrypt.getHash(password);
+            if (!emailValidator.validate(email)) {
+                throw new Error("Not a valid email address");
+            }
 
-            this.bcrypt
-                .getHash(req.body.password)
-                .then((pass_hash) => {
-                    return Verifier
-                        .build({
-                            name: req.body.name,
-                            password: pass_hash,
-                            email: req.body.email,
-                        })
-                        .save();
-                })
-                .then(response => {
-                    console.log(response);
-                    resolve('Verifier registration successful.');
+            const verifier = Verifier.build({
+                name,
+                email,
+                password: hashedPassword,
+            }).save();
 
-                })
-                .catch((err) => {
-                    console.log(err);
-                    reject('Verifier registration failed.');
-                });
-
-
-        });
+            return "Verifier Registration Successful.";
+        } catch (error) {
+            consola.error(error);
+            throw error;
+        }
     }
 
-    generateId(uni_id, uni_user_id) {
-        return (`${uni_id}@${uni_user_id}`)
+    async logIn({ email, password }) {
+        try {
+            const verifier = await Verifier.findOne({
+                where: { email: email },
+            });
+
+            if (!verifier) {
+                throw new Error("Email is not registered as verifier!");
+            }
+
+            const isValidPassword = await this.bcrypt.verifyPassword(
+                password,
+                verifier.password,
+            );
+
+            if (isValidPassword) {
+                const token = this.tokenHandler.getToken({ email });
+                return token;
+            }
+
+            throw new Error("Could not get token");
+        } catch (error) {
+            consola.error(error);
+            throw error;
+        }
     }
-
-    logIn(req) {
-        return new Promise((resolve, reject) => {
-            let verifier = null;
-
-            Verifier
-                .findOne({
-                    where: {
-                        email: req.body.email
-                    }
-                })
-                .then((response) => {
-                    verifier = response;
-                    console.log(verifier);
-
-                    if (verifier) {
-                        return this.bcrypt.verifyPassword(req.body.password, verifier.password)
-                    }
-
-                    reject('Invalid Email or Password');
-                })
-                .then(response => {
-                    let token = this.tokenHandler.getToken({
-                        name: verifier.name,
-                        university_email: verifier.university_email
-                    });
-                    resolve(token);
-                })
-                .catch((err) => {
-                    console.log(err);
-                    reject('Authentication failed')
-                });
-        });
-    }
-
-    findByEmail(email) {
-        return new Promise((resolve, reject) => {
-
-        })
-    }
-
-    findAgentById(agent_id) {
-        return new Promise((resolve, reject) => {
-
-        });
-    }
-
-
 }
 
 module.exports = VerifierService;

@@ -3,6 +3,7 @@ const Sequelize = require("sequelize");
 
 const Account = require("../models/account.js");
 const Customer = require("../models/customer.js");
+const Verifier = require("../models/verifier.model.js");
 const Transaction = require("../models/transaction.js");
 const AccountStatement = require("../models/statement.js");
 
@@ -48,6 +49,7 @@ class DbConfigurator {
 
     async initModels() {
         try {
+            Verifier.init(this.connection);
             Customer.init(this.connection);
             Account.init(this.connection);
             Transaction.init(this.connection);
@@ -75,6 +77,7 @@ class DbConfigurator {
 
     async syncModels() {
         try {
+            Verifier.sync();
             Customer.sync();
             Account.sync();
             Transaction.sync();

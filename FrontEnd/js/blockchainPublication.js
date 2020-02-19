@@ -1,5 +1,6 @@
 $("#CreateCon").click(function() {
     $("#publishingModal").modal();
+    var txHash = '';
     var obj = {
 
         accountName: $("#accountHolderName").html(),
@@ -24,7 +25,18 @@ $("#CreateCon").click(function() {
 
             obj.nonce = nonce;
 
-            console.log("Aita holo amader Obj", obj);
+            // console.log("Aita holo amader Obj", obj);
+            function genarateQR() {
+                return new QRCode("qrcode", {
+                    text: " http://127.0.0.1:9091/statement/" +
+                        txHash,
+                    width: $(this).width() / 11,
+                    height: $(this).width() / 11,
+                    colorDark: "#000000",
+                    colorLight: "#FFFFFF",
+                    correctLevel: QRCode.CorrectLevel.H
+                });
+            }
 
             $.ajax({
                 type: 'post',
@@ -35,7 +47,8 @@ $("#CreateCon").click(function() {
                     console.log(response);
 
                     $('#rowLoader').html("<h1>Data Successfully Published in Blockchain</h1>");
-
+                    txHash = response;
+                    genarateQR();
                 },
                 error: function(err) {
                     console.log(err);

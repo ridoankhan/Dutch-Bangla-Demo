@@ -17,11 +17,11 @@ class StatementRouter extends Router {
             );
 
             this.router.get(
-                "/:tx_hash",
-                this.statementController.getStatementByTxHash,
+                "/:id",
+                this.statementController.getStatementByTxId,
             );
         } catch (error) {
-            console.error(error);
+            consola.error(error);
             throw error;
         }
     }

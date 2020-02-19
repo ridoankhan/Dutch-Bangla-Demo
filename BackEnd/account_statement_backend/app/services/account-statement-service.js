@@ -49,7 +49,7 @@ class StatementService {
         }
     }
 
-    async findByTsHash(tx_hash) {
+    async findByTsHash(id) {
         try {
             let statement = await Statement.findOne({
                 attributes: [
@@ -65,11 +65,14 @@ class StatementService {
                     "uncollected_funds",
                 ],
                 where: {
-                    tx_hash: tx_hash,
+                    id: id,
                 },
             });
 
             consola.info(statement);
+            if (!statement) {
+                throw new Error("No account statement found.");
+            }
             return statement;
         } catch (error) {
             consola.error(error);
