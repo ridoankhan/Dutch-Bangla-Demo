@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 </head>
 
-<body>
+<body style="background-color: white;">
 
     <div>
         <!-- nav bar -->
@@ -53,7 +53,7 @@
 
                     <div class="form-group">
                         <button type="button" id="showAccountbtn" class="btn btn-primary btn-block" style="visibility:visible;   font-weight: bold;"> Show Account </button>
-                        <button type="button" id="CreateCon" class="btn btn-primary btn-block" style="visibility:hidden;    font-weight: bold;"> Create </button>
+                        <button type="button" id="CreateCon" class="btn btn-primary btn-block" style="visibility:hidden;    font-weight: bold;" > Create </button>
                         <button type="button" id="createPdfbtn" class="btn btn-primary btn-block" style="visibility:hidden;    font-weight: bold;"> Create PDF </button>
                     </div>
 
@@ -63,10 +63,10 @@
         </div>
 
         <!-- Statement  -->
-        <div class="col-sm-9 col-lg-9 col-md-9" style="background-color: white;">
+        <div id="statement" class="col-sm-9 col-lg-9 col-md-9" style="visibility: hidden; background-color: white;">
 
             <div>
-                <div class="card-body" style="background-color: rgb(255, 255, 255); min-height: 70vw; color: rgb(0, 0, 0); padding-top: 5vw; font-family: serif; font-size: .8vw; padding-left: 5vw; padding-right:5vw; line-height: .7vw; height: 100%;">
+                <div class="card-body" style="background-color: rgb(255, 255, 255); min-height: 70vw; color: rgb(0, 0, 0); padding-top: 5vw; font-family: serif; font-size: .8vw; padding-left: 5vw; padding-right:5vw; line-height: .7vw; height: auto;">
                     <!-- row 1 -->
                     <div class="row" style="padding-bottom: 1vw; line-height:0.9vw;">
 
@@ -276,23 +276,53 @@
 
         </div>
 
+        <!-- Modal -->
+        <div class="modal fade" id="publishingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="modalTitleHead">Please Wait....</h5>
+                  
+                </div>
+                <div class="modal-body" style="height: 15vw;">
+                    <div class="row" style="height: 5vw;"></div>
+                    <div id="rowLoader" class="row text-center">
+                        <div class="col-md-3 bg">
+                            <div class="loader" id="loader-8"></div>
+                        </div>
+                        <div class="col-md-3 bg">
+                            <div class="loader" id="loader-8"></div>
+                        </div>
+                        <div class="col-md-3 bg">
+                            <div class="loader" id="loader-8"></div>
+                        </div>
+                        <div class="col-md-3 bg">
+                            <div class="loader" id="loader-8"></div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" id="closeModalbtn" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+        </div>
+        
+           
+        </div>
+        
+
 
 
         <script src="./js/jquery-3.2.1.min.js"></script>
         <script src="./js/jquery-ui.js"></script>
-        <script src="./js/dataTable.min.js"></script>
-        <script type="text/javascript" src="assets/plugins/qr/qrcode.min.js"></script>
-        <script src="./js/bootstrap.js"></script>
+        <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
         <script src="./js/bootstrap.min.js"></script>
-        <script src="./js/chart.min.js"></script>
-        <script src="./js/chart-data.js"></script>
-        <script src="./js/easypiechart.js"></script>
-        <script src="./js/easypiechart-data.js"></script>
         <script src="./js/bootstrap-datepicker.js"></script>
         <script src="./js/custom.js"></script>
         <script src="./js/style.js"></script>
         <script src="./js/qrcode.js"></script>
-        <script src="./js/html2canvas.js"></script>
         <script src="./js/jspdf.min.js"></script>
         <script src="./js/jspdf.plugin.autotable.js"></script>
         <script src="./js/bootstrap-filestyle.min.js"></script>

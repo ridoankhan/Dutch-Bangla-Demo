@@ -1,5 +1,8 @@
 $("#CreateCon").click(function() {
+    $("#publishingModal").modal();
+    var txHash = '';
     var statementId = '';
+
     var obj = {
 
         accountName: $("#accountHolderName").html(),
@@ -43,8 +46,14 @@ $("#CreateCon").click(function() {
                 data: JSON.stringify(obj),
                 success: function(response) {
                     console.log(response);
+
+                    $('#rowLoader').html("<h2>Data Successfully Published in Blockchain</h2>");
                     txHash = response;
                     genarateQR();
+                    $("#CreateCon").attr("style", "visibility: hidden");
+                    $("#createPdfbtn").attr("style", "visibility: visible");
+
+
                 },
                 error: function(err) {
                     console.log(err);
