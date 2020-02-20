@@ -69,6 +69,14 @@ class StatementService {
                 where: {
                     id: id,
                 },
+                include: [{
+                    model: Account,
+                    attributes: ['accountNumber'],
+                    as: 'account',
+                    include: [
+                        { model: Customer, attributes: ['customerName'], as: 'customer' }
+                    ]
+                }]
             });
 
             consola.info(statement);
