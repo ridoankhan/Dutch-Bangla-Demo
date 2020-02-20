@@ -30,7 +30,7 @@ $("#CreateCon").click(function() {
             // console.log("Aita holo amader Obj", obj);
             function genarateQR() {
                 return new QRCode("qrcode", {
-                    text: "http://127.0.0.1:9090/verify.html/" + statementId,
+                    text: "http://127.0.0.1:9090/verify.html?statementId=" + statementId,
                     width: $(this).width() / 15,
                     height: $(this).width() / 15,
                     colorDark: "#000000",

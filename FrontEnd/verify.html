@@ -286,26 +286,12 @@
                 $("#iconSix").hide();
                 $("#verifyIconFail").hide();
 
-
-                var getUrlParameter = function getUrlParameter(sParam) {
-                    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-                        sURLVariables = sPageURL.split('?'),
-                        sParameterName,
-                        i;
-
-                    for (i = 0; i < sURLVariables.length; i++) {
-                        sParameterName = sURLVariables[i].split('=');
-
-                        if (sParameterName[0] === sParam) {
-                            return sParameterName[1] === undefined ? true : sParameterName[1];
-                        }
-                    }
-                };
+                var statementId = window.location.href.split("?")[1].split("=")[1];
 
                 $.ajax({
                     type: 'GET',
                     contentType: "application/json",
-                    url: "http://localhost:9091/statement/1",
+                    url: "http://localhost:9091/statement/" + statementId,
                     success: function(response) {
                         console.log(response);
 
@@ -328,12 +314,6 @@
                         $("#verifyIconFail").show();
                     }
                 });
-
-                var txHash = getUrlParameter('txhash');
-
-                // console.log(txHash);
-
-
 
                 $("#verifyButton").click(function() {
 
