@@ -42,6 +42,8 @@ class StatementService {
                 uncollected_funds,
                 accountId,
             }).save();
+
+            consola.info(ac_statement);
             return ac_statement;
         } catch (error) {
             consola.error(error);

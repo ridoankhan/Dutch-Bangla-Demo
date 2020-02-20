@@ -60,7 +60,8 @@ class TransactionService {
             let transactions = await Transaction.sequelize.query(
                 `SELECT * from Transaction
                 WHERE accountId = :currAccId
-                AND date BETWEEN :start and :end`, {
+                AND date BETWEEN :start and :end`,
+                {
                     replacements: {
                         currAccId: accountId,
                         start: startDate,
@@ -83,7 +84,8 @@ class TransactionService {
                 `SELECT max(date) as date
                  FROM Transaction
                  WHERE accountId = :selectedAccId
-                 AND date <= :openingDate`, {
+                 AND date <= :openingDate`,
+                {
                     replacements: {
                         selectedAccId: accountId,
                         openingDate: date,
@@ -92,22 +94,24 @@ class TransactionService {
                 },
             );
 
-            accOpeningDate = JSON.stringify(
-                    accOpeningDate[accOpeningDate.length - 1].date,
-                )
-                .replace("T", " ")
-                .split(".")[0]
-                .replace('"', "");
+            // accOpeningDate = JSON.stringify(
+            //         accOpeningDate[accOpeningDate.length - 1].date,
+            //     )
+            //     .replace("T", " ")
+            //     .split(".")[0]
+            //     .replace('"', "");
 
             consola.info(accOpeningDate);
             consola.info(typeof accOpeningDate);
+            accOpeningDate = accOpeningDate[accOpeningDate.length - 1].date;
 
             const balance = await Transaction.sequelize.query(
                 `SELECT balance, date
                 FROM Transaction
                 WHERE accountId = :selectedAccId
                 AND
-                    date=:openingDate`, {
+                    date=:openingDate`,
+                {
                     replacements: {
                         selectedAccId: accountId,
                         openingDate: accOpeningDate,
@@ -122,11 +126,11 @@ class TransactionService {
                     date: balance[balance.length - 1].date,
                     brn: null,
                     description: "Opening Balance",
-                    reference: '',
+                    reference: "",
                     credit: balance[balance.length - 1].balance,
                     debit: 0,
                     balance: balance[balance.length - 1].balance,
-                    accountId: accountId
+                    accountId: accountId,
                 };
             }
             throw new Error("No transaction found within given date range.");
