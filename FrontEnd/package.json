@@ -1,0 +1,16 @@
+{
+    "name": "dbbl_bank_statement",
+    "version": "1.0.0",
+    "description": "dbbl bank's statement will be pulished in blockchain for verification purspose",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "nodemon server.js"
+    },
+    "keywords": [],
+    "author": "Ridoan Khan Anik",
+    "license": "ISC",
+    "devDependencies": {
+        "nodemon": "^2.0.2"
+    }
+}
