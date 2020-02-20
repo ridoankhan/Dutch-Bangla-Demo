@@ -30,7 +30,7 @@ class AuthController {
             res.status(201).json({ token });
         } catch (error) {
             consola.error(error);
-            res.status(500).json(error);
+            res.status(500).json(error.message);
         }
     }
 }

@@ -37,6 +37,8 @@ class VerifierService {
 
     async logIn({ email, password }) {
         try {
+            consola.info(email);
+            consola.info(password)
             const verifier = await Verifier.findOne({
                 where: { email: email },
             });
