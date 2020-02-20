@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Leadschain</title>
+    <title>DBBL BankChain</title>
     <link href="./css/bootstrap.min.css" rel="stylesheet">
     <link href="./css/font-awesome.min.css" rel="stylesheet">
     <link href="./css/datepicker3.css" rel="stylesheet">
@@ -56,16 +56,14 @@
 
 <body>
     <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse"><span
-                        class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span></button>
-                <a class="navbar-brand" href="#"><span>LEADS Chain</span></a>
-
-            </div>
+        <div class="horizontal-menu" position>
+            <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#"><span>DBBL</span> BANKCHAIN</a>
+                    </div>
+                </div>
+            </nav>
         </div>
         <!-- /.container-fluid -->
     </nav>
@@ -77,8 +75,7 @@
 
             <div class="row">
                 <div class="col-12">
-                    <div class="panel-heading"><img src="../app/img/dbbl_baner.png" class="img-responsive" style="position:absolute;top:100px;left: 50%;
-                        transform: translateX(-50%) translateY(-50%);white-space:nowrap" />
+                    <div class="panel-heading"><img src="./img/dbbl_baner.png" class="img-responsive" />
                         <div class="panel panel-default">
 
                             <div class="panel-body">
@@ -268,112 +265,7 @@
         <script src="./js/style.js"></script>
         <script src="./js/qrcode.js"></script>
 
-        <script type="text/javascript">
-            $(document).ready(function() {
-                $("#verifyIconSuccess").hide();
-                $("#verifyIconFail").hide();
-                $("#one").hide();
-                $("#two").hide();
-                $("#three").hide();
-                $("#four").hide();
-                $("#five").hide();
-                $("#six").hide();
-                $("#iconOne").hide();
-                $("#iconTwo").hide();
-                $("#iconThree").hide();
-                $("#iconFour").hide();
-                $("#iconFive").hide();
-                $("#iconSix").hide();
-                $("#verifyIconFail").hide();
-
-                var statementId = window.location.href.split("?")[1].split("=")[1];
-
-                $.ajax({
-                    type: 'GET',
-                    contentType: "application/json",
-                    url: "http://localhost:9091/statement/" + statementId,
-                    success: function(response) {
-                        console.log(response);
-
-                        $("#fullNameIDTd").html(response.account.customer.customerName);
-                        $("#accountNumber").html(response.account.accountNumber);
-                        $("#openingBalance").html(response.opening_balance);
-                        $("#closingBalance").html(response.closing_balance);
-                        $("#startDate").html(response.startDate);
-                        $("#endDate").html(response.endDate);
-                        $("#totalCredit").html(response.credits);
-                        $("#totalDebit").html(response.debits);
-                        $("#creditCount").html(response.cr_count);
-                        $("#debitCounts").html(response.dr_count);
-                        $("#unCollected").html(response.uncollected_funds);
-                        $("#currencylabel").html("Bangladeshi Taka");
-
-                    },
-                    error: function(response) {
-                        // console.log(response);
-                        alert("No Related Information Found");
-                        $("#verifyButton").remove();
-                        $("#verifyIconFail").show();
-                    }
-                });
-
-                $("#verifyButton").click(function() {
-
-                    $("#one").fadeIn(1237, function() {
-                        $("#iconOne").fadeIn(300);
-                        $("#two").fadeIn(1152, function() {
-                            $("#iconTwo").fadeIn(350);
-                            $("#three").fadeIn(1346, function() {
-                                $("#iconThree").fadeIn(323);
-                                $("#four").fadeIn(1390,
-                                    function() {
-                                        $("#iconFour").fadeIn(
-                                            312);
-                                        $("#five").fadeIn(
-                                            1058,
-                                            function() {
-                                                $(
-                                                        "#iconFive"
-                                                    )
-                                                    .fadeIn(
-                                                        320
-                                                    );
-                                                $(
-                                                        "#six"
-                                                    )
-                                                    .fadeIn(
-                                                        1817,
-                                                        function() {
-                                                            $
-                                                                (
-                                                                    "#iconSix"
-                                                                )
-                                                                .fadeIn(
-                                                                    300
-                                                                );
-                                                            $
-                                                                (
-                                                                    "#verifyIconSuccess"
-                                                                )
-                                                                .show();
-                                                        }
-                                                    );
-                                            });
-                                    });
-                            });
-                        });
-
-                    });
-                    // else {
-                    //     $("#verifyIconFail").show();
-                    // }
-                    // },
-
-
-
-                });
-            });
-        </script>
+        <script type="text/javascript" src="./js/verify.js"></script>
 
 </body>
 

@@ -44,7 +44,7 @@ $("#showAccountbtn").click(function() {
 
     $.ajax({
         type: "POST",
-        url: "http://localhost:9091/transaction/by-date-range",
+        url: "http://115.127.24.181:9091/transaction/by-date-range",
         data: customerInfo,
         dataType: "json",
         success: function(response) {
@@ -112,7 +112,7 @@ $("#showAccountbtn").click(function() {
 
             $.ajax({
                 type: "GET",
-                url: "http://127.0.0.1:9091/account/" + customerId,
+                url: "http://115.127.24.181:9091/account/" + customerId,
                 dataType: "json",
                 success: function(response) {
                     // console.log(response);

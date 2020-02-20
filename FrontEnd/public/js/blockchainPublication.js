@@ -20,7 +20,7 @@ $("#CreateCon").click(function() {
 
     $.ajax({
         type: "GET",
-        url: "http://localhost:9092/nonce/0xeE21a5572f6089924AF72019F653E32812e87cF4",
+        url: "http://115.127.24.181:9092/nonce/0xeE21a5572f6089924AF72019F653E32812e87cF4",
         success: function(response) {
             console.log(response.nonce);
             let nonce = response.nonce;
@@ -30,7 +30,7 @@ $("#CreateCon").click(function() {
             // console.log("Aita holo amader Obj", obj);
             function genarateQR() {
                 return new QRCode("qrcode", {
-                    text: "http://127.0.0.1:9090/verify.html?statementId=" + statementId,
+                    text: "http://115.127.24.181:9090/verify.html?statementId=" + statementId,
                     width: $(this).width() / 15,
                     height: $(this).width() / 15,
                     colorDark: "#000000",
@@ -42,7 +42,7 @@ $("#CreateCon").click(function() {
             $.ajax({
                 type: 'post',
                 contentType: "application/json",
-                url: "http://localhost:9092/publish",
+                url: "http://115.127.24.181:9092/publish",
                 data: JSON.stringify(obj),
                 success: function(response) {
                     console.log(response);
@@ -72,7 +72,7 @@ $("#CreateCon").click(function() {
                     $.ajax({
                         type: "post",
                         contentType: "application/json",
-                        url: "http://localhost:9091/statement",
+                        url: "http://115.127.24.181:9091/statement",
                         data: JSON.stringify(statementObj),
                         success: function(response) {
                             console.log(response);
