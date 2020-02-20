@@ -311,6 +311,8 @@
                     },
                     error: function(response) {
                         // console.log(response);
+                        alert("No Related Information Found");
+                        $("#verifyButton").remove();
                         $("#verifyIconFail").show();
                     }
                 });
