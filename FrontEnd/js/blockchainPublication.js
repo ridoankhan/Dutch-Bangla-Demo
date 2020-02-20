@@ -27,7 +27,7 @@ $("#CreateCon").click(function() {
             // console.log("Aita holo amader Obj", obj);
             function genarateQR() {
                 return new QRCode("qrcode", {
-                    text: " http://127.0.0.1:9091/statement/1",
+                    text: "http://127.0.0.1:9091/statement/1",
                     width: $(this).width() / 10,
                     height: $(this).width() / 10,
                     colorDark: "#000000",
