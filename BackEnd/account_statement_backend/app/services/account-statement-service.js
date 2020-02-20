@@ -44,7 +44,7 @@ class StatementService {
             }).save();
 
             consola.info(ac_statement);
-            return ac_statement;
+            return ac_statement.id;
         } catch (error) {
             consola.error(error);
             throw error;
@@ -69,14 +69,20 @@ class StatementService {
                 where: {
                     id: id,
                 },
-                include: [{
-                    model: Account,
-                    attributes: ['accountNumber'],
-                    as: 'account',
-                    include: [
-                        { model: Customer, attributes: ['customerName'], as: 'customer' }
-                    ]
-                }]
+                include: [
+                    {
+                        model: Account,
+                        attributes: ["accountNumber"],
+                        as: "account",
+                        include: [
+                            {
+                                model: Customer,
+                                attributes: ["customerName"],
+                                as: "customer",
+                            },
+                        ],
+                    },
+                ],
             });
 
             consola.info(statement);
