@@ -131,7 +131,7 @@ $("#showAccountbtn").click(function() {
                     $("#accountHolderPostCode").html(postCode);
 
 
-                    $("#showAccountbtn").attr("style", "visibility: hidden");
+                    $("#showAccountbtn").remove();
                     $('#statement').attr("style", "visibility: visible");
                     $("#CreateCon").attr("style", "visibility: visible");
 

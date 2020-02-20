@@ -31,8 +31,8 @@ $("#CreateCon").click(function() {
             function genarateQR() {
                 return new QRCode("qrcode", {
                     text: "http://127.0.0.1:9091/statement/1",
-                    width: $(this).width() / 10,
-                    height: $(this).width() / 10,
+                    width: $(this).width() / 15,
+                    height: $(this).width() / 15,
                     colorDark: "#000000",
                     colorLight: "#FFFFFF",
                     correctLevel: QRCode.CorrectLevel.H
@@ -47,10 +47,11 @@ $("#CreateCon").click(function() {
                 success: function(response) {
                     console.log(response);
 
-                    $('#rowLoader').html("<h2>Data Successfully Published in Blockchain</h2>");
+                    $('#rowLoader').html("<h2 style='color:green;'>Data Successfully Published in Blockchain</h2>");
+                    $("#modalTitleHead").hide();
                     txHash = response;
                     genarateQR();
-                    $("#CreateCon").attr("style", "visibility: hidden");
+                    $("#CreateCon").remove();
                     $("#createPdfbtn").attr("style", "visibility: visible");
 
 
