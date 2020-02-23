@@ -70,7 +70,7 @@ $(document).ready(function() {
             colWidth / 3,
         );
         rowHeight = adjustRowHeight(rowHeight, qrHeight);
-        adjustTopMargin(rowHeight, lineHeigth);
+        adjustTopMargin(rowHeight, 0);
     }
 
     function addSecondRow() {
@@ -148,7 +148,7 @@ $(document).ready(function() {
             {},
         );
         rowHeight = adjustRowHeight(rowHeight, colHeight);
-        adjustTopMargin(rowHeight, lineHeigth * 2);
+        adjustTopMargin(rowHeight, 0);
     }
 
     function addThirdRow() {
@@ -161,7 +161,7 @@ $(document).ready(function() {
             colWidth,
             {},
         );
-        adjustTopMargin(rowHeight, lineHeigth);
+        adjustTopMargin(rowHeight, 0);
     }
 
     function addFourthRow() {
@@ -202,20 +202,8 @@ $(document).ready(function() {
 
         adjustTopMargin(
             pdf.previousAutoTable.finalY - currentMarginTop,
-            lineHeigth,
+            lineHeigth * 2,
         );
-
-        const endingStatement = $("#endingStatement").text();
-        const numOfCols = 3;
-        const colWidth = getColWidth(numOfCols);
-        let addedHeight = addText(
-            endingStatement,
-            margins.left + colWidth * 3,
-            currentMarginTop,
-            colWidth,
-            { align: "right" },
-        );
-        adjustTopMargin(addedHeight, lineHeigth);
     }
 
     function addFifthRow() {
@@ -228,7 +216,17 @@ $(document).ready(function() {
             colWidth * 2,
             {},
         );
-        adjustTopMargin(heightAdded, lineHeigth);
+
+        const endingStatement = $("#endingStatement").text();
+        let addedHeight = addText(
+            endingStatement,
+            margins.left + colWidth * 5,
+            currentMarginTop,
+            colWidth,
+            { align: "right" },
+        );
+
+        adjustTopMargin(heightAdded, 0);
     }
 
     function addSixthRow() {
@@ -369,8 +367,8 @@ $(document).ready(function() {
         return lines.length * lineHeigth;
     }
 
-    function adjustTopMargin(rowHeight, lineHeight) {
-        currentMarginTop = currentMarginTop + rowHeight + lineHeigth;
+    function adjustTopMargin(rowHeight, height) {
+        currentMarginTop = currentMarginTop + rowHeight + height;
     }
 
     function addQrCode(marginLeft, marginTop, width, height) {
