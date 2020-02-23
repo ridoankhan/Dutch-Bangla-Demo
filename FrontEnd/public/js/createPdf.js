@@ -40,7 +40,7 @@ $(document).ready(function() {
         const marginTop = currentMarginTop;
         const colWidth = getColWidth(numOfCols);
         const branchMarginLeft = margins.left + colWidth / 2;
-        const qrMarginLeft = branchMarginLeft + colWidth;
+        const qrMarginLeft = branchMarginLeft + colWidth * 2;
         const branchInfo = [
             $("#bankName").text(),
             $("#bankBranchName").text(),
@@ -63,6 +63,13 @@ $(document).ready(function() {
             rowHeight += heightAdded;
         });
 
+        const qrHeight = addQrCode(
+            qrMarginLeft,
+            currentMarginTop,
+            colWidth / 3,
+            colWidth / 3,
+        );
+        rowHeight = adjustRowHeight(rowHeight, qrHeight);
         adjustTopMargin(rowHeight, lineHeigth);
     }
 
@@ -121,21 +128,21 @@ $(document).ready(function() {
 
         colHeight = addColumn(
             thirdColFirstInfo,
-            margins.left + colWidth * 2,
+            margins.left + (colWidth * 3) / 2,
             currentMarginTop,
             colWidth,
             {},
         );
         colHeight = addColumn(
             thirdColSecondInfo,
-            margins.left + (colWidth * 7) / 3,
+            margins.left + (colWidth * 4) / 2.2,
             currentMarginTop,
             colWidth,
             {},
         );
         colHeight = addColumn(
             thirdColThirdInfo,
-            margins.left + (colWidth * 8) / 3.3,
+            margins.left + (colWidth * 4) / 2.1,
             currentMarginTop,
             colWidth,
             {},
@@ -210,6 +217,7 @@ $(document).ready(function() {
         );
         adjustTopMargin(addedHeight, lineHeigth);
     }
+
     function addFifthRow() {
         const numOfCols = 5;
         const colWidth = getColWidth(numOfCols);
@@ -363,5 +371,15 @@ $(document).ready(function() {
 
     function adjustTopMargin(rowHeight, lineHeight) {
         currentMarginTop = currentMarginTop + rowHeight + lineHeigth;
+    }
+
+    function addQrCode(marginLeft, marginTop, width, height) {
+        let x = marginLeft;
+        let y = currentMarginTop;
+
+        var qrImg = $("#qrcode").children()[1].src;
+        pdf.addImage(qrImg, "PNG", marginLeft, marginTop, width, height);
+
+        return height;
     }
 });
