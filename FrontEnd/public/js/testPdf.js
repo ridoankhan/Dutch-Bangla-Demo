@@ -23,7 +23,7 @@ $(document).ready(function() {
         addFifthRow();
         addSixthRow();
         addSeventhRow();
-
+        addQrCode();
         pdf.save("stmt.pdf");
     });
 
@@ -179,6 +179,7 @@ $(document).ready(function() {
         );
         currentMarginTop = currentMarginTop + lineHeigth * 3;
     }
+
     function addFifthRow() {
         const numOfColumn = 4;
         addText(
@@ -303,5 +304,12 @@ $(document).ready(function() {
         });
 
         pdf.text(marginLeft, marginTop, lines);
+    }
+
+    function addQrCode() {
+
+        var qrImg = $('#qrcode').children()[1].src;
+        pdf.addImage(qrImg, 'PNG', 170, 12, 20, 20);
+
     }
 });
