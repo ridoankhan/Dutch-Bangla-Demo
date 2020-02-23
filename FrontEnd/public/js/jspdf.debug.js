@@ -1310,7 +1310,7 @@
        * Adds (and transfers the focus to) new page to the PDF document.
        * @param format {String/Array} The format of the new page. Can be <ul><li>a0 - a10</li><li>b0 - b10</li><li>c0 - c10</li><li>c0 - c10</li><li>dl</li><li>letter</li><li>government-letter</li><li>legal</li><li>junior-legal</li><li>ledger</li><li>tabloid</li><li>credit-card</li></ul><br />
        * Default is "a4". If you want to use your own format just pass instead of one of the above predefined formats the size as an number-array , e.g. [595.28, 841.89]
-       * @param orientation {String} Orientation of the new page. Possible values are "portrait" or "landscape" (or shortcuts "p" (Default), "l") 
+       * @param orientation {String} Orientation of the new page. Possible values are "portrait" or "landscape" (or shortcuts "p" (Default), "l")
        * @function
        * @returns {jsPDF}
        *
@@ -1583,7 +1583,7 @@
           throw new Error('Type of text must be string or Array. "' + text + '" is not recognized.');
         }
 
-        //Escaping 
+        //Escaping
         var activeFontEncoding = fonts[activeFontKey].encoding;
 
         if (activeFontEncoding === "WinAnsiEncoding" || activeFontEncoding === "StandardEncoding") {
@@ -1705,7 +1705,7 @@
 
         var usedRenderingMode = pageContext.usedRenderingMode || -1;
 
-        //if the coder wrote it explicitly to use a specific 
+        //if the coder wrote it explicitly to use a specific
         //renderingMode, then use it
         if (tmpRenderingMode !== -1) {
           xtra += tmpRenderingMode + " Tr\n";
@@ -2614,12 +2614,12 @@
   // `self` is undefined in Firefox for Android content script context
   // while `this` is nsIContentFrameMessageManager
   // with an attribute `content` that corresponds to the window
-  
+
 
   /**
    * jsPDF AcroForm Plugin Copyright (c) 2016 Alexander Weidt,
    * https://github.com/BiggA94
-   * 
+   *
    * Licensed under the MIT License. http://opensource.org/licenses/mit-license
    */
 
@@ -2664,7 +2664,7 @@
 
     /**
     * Calculating the Ff entry:
-    * 
+    *
     * The Ff entry contains flags, that have to be set bitwise In the Following
     * the number in the Comment is the BitPosition
     */
@@ -2958,7 +2958,7 @@
 
     /**
     * small workaround for calculating the TextMetric approximately
-    * 
+    *
     * @param text
     * @param fontsize
     * @returns {TextMetrics} (Has Height and Width)
@@ -3050,7 +3050,7 @@
 
     /**
     * Creates the single Fields and writes them into the Document
-    * 
+    *
     * If fieldArray is set, use the fields that are inside it instead of the
     * fields from the AcroRoot (for the FormXObjects...)
     */
@@ -3266,7 +3266,7 @@
     AcroFormPDFObject.prototype.getContent = function () {
       /**
       * Prints out all enumerable Variables from the Object
-      * 
+      *
       * @param fieldObject
       * @returns {string}
       */
@@ -3495,7 +3495,7 @@
       });
 
       /**
-      * 
+      *
       * @type {Array}
       */
       this.BG;
@@ -3536,7 +3536,7 @@
       this.TI = 0;
       /**
       * Defines, whether the
-      * 
+      *
       * @type {boolean}
       */
 
@@ -3777,7 +3777,7 @@
 
       /**
       * For PDF 1.4
-      * 
+      *
       * @type {boolean}
       */
       var _fileSelect = false;
@@ -3792,7 +3792,7 @@
       });
       /**
       * For PDF 1.4
-      * 
+      *
       * @type {boolean}
       */
       var _doNotSpellCheck = false;
@@ -3807,7 +3807,7 @@
       });
       /**
       * For PDF 1.4
-      * 
+      *
       * @type {boolean}
       */
       var _doNotScroll = false;
@@ -3876,7 +3876,7 @@
         /**
           * If any other icons are needed, the number between the
           * brackets can be changed
-          * 
+          *
           * @returns {string}
           */
         createMK: function createMK() {
@@ -3884,7 +3884,7 @@
         },
         /**
           * Returns the standard On Appearance for a CheckBox
-          * 
+          *
           * @returns {AcroFormXObject}
           */
         YesPushDown: function YesPushDown(formObject) {
@@ -3937,7 +3937,7 @@
 
         /**
           * Returns the standard Off Appearance for a CheckBox
-          * 
+          *
           * @returns {AcroFormXObject}
           */
         OffPushDown: function OffPushDown(formObject) {
@@ -4058,7 +4058,7 @@
         Cross: {
           /**
             * Creates the Actual AppearanceDictionary-References
-            * 
+            *
             * @param name
             * @returns
             */
@@ -4128,7 +4128,7 @@
 
       /**
         * Returns the standard Appearance
-        * 
+        *
         * @returns {AcroFormXObject}
         */
       createDefaultAppearanceStream: function createDefaultAppearanceStream(formObject) {
@@ -4478,7 +4478,7 @@
    *               2014 Diego Casorran, https://github.com/diegocr
    *               2014 James Robb, https://github.com/jamesbrobb
    *
-   * 
+   *
    */
   (function (jsPDFAPI) {
 
@@ -4504,7 +4504,7 @@
   		]
   		/**
     * Recognize filetype of Image by magic-bytes
-    * 
+    *
     * https://en.wikipedia.org/wiki/List_of_file_signatures
     *
     * @name getImageFileTypeByImageData
@@ -4512,7 +4512,7 @@
     * @function
     * @param {String} imageData as base64 encoded DataUrl
     * @param {String} format of file if filetype-recognition fails, e.g. 'JPEG'
-    * 
+    *
     * @returns {String} filetype of Image
     * @methodOf jsPDF#
     */
@@ -4826,7 +4826,7 @@
    * @public
    * @function
    * @param {String} possible Base64-String
-   * 
+   *
    * @returns {boolean}
    * @methodOf jsPDF#
    */
@@ -4865,7 +4865,7 @@
 
   	/**
     * Check to see if ArrayBuffer is supported
-    * 
+    *
     * @returns {boolean}
       * @methodOf jsPDF#
     */
@@ -4876,7 +4876,7 @@
   	/**
     * Tests supplied object to determine if ArrayBuffer
     * @param {Object[object]}
-    * 
+    *
     * @returns {boolean}
     * @methodOf jsPDF#
     */
@@ -4902,7 +4902,7 @@
    * @public
    * @function
    * @param {ArrayBuffer} BinaryString with ImageData
-   * 
+   *
    * @returns {Uint8Array}
    */
   	jsPDFAPI.binaryStringToUint8Array = function (binary_string) {
@@ -4924,7 +4924,7 @@
    * @public
    * @function
    * @param {ArrayBuffer} ArrayBuffer with ImageData
-   * 
+   *
    * @returns {String}
    */
   	jsPDFAPI.arrayBufferToBinaryString = function (buffer) {
@@ -4962,7 +4962,7 @@
       * @name arrayBufferToBase64
       * @public
       * @function
-      * 
+      *
       * @returns {String}
       */
   	jsPDFAPI.arrayBufferToBase64 = function (arrayBuffer) {
@@ -5026,7 +5026,7 @@
       *
       * @public
       * @function
-      * 
+      *
       * @returns {String}
       */
   	jsPDFAPI.createImageInfo = function (data, wd, ht, cs, bpc, f, imageIndex, alias, dp, trns, pal, smask, p) {
@@ -5065,7 +5065,7 @@
    * @param {String} alias of the image (if used multiple times)
    * @param {String} compression of the generated JPEG, can have the values 'NONE', 'FAST', 'MEDIUM' and 'SLOW'
    * @param {Number} rotation of the image in degrees (0-359)
-   * 
+   *
    * @returns jsPDF
    * @methodOf jsPDF#
    */
@@ -6001,7 +6001,7 @@
 
   /**
    * This plugin mimics the HTML5 Canvas
-   * 
+   *
    * The goal is to provide a way for current canvas users to print directly to a PDF.
    */
 
@@ -6051,7 +6051,7 @@
    *               2014 James Hall, james@parall.ax
    *               2014 Diego Casorran, https://github.com/diegocr
    *
-   * 
+   *
    * ====================================================================
    */
 
@@ -6677,7 +6677,7 @@
                   this.path = origPath;
               }
 
-              // We only use X axis as scale hint 
+              // We only use X axis as scale hint
               var scale = 1;
               try {
                   scale = this._matrix_decompose(this._getTransform()).scale[0];
@@ -6731,7 +6731,7 @@
               }
 
               var scale = 1;
-              // We only use the X axis as scale hint 
+              // We only use the X axis as scale hint
               try {
                   scale = this._matrix_decompose(this._getTransform()).scale[0];
               } catch (e) {
@@ -7970,7 +7970,7 @@
    *               2014 Wolfgang Gassler, https://github.com/woolfg
    *               2014 Steven Spungin, https://github.com/flamenco
    *
-   * 
+   *
    * ====================================================================
    */
 
@@ -8958,11 +8958,11 @@
   	};
   })(jsPDF.API);
 
-  /** ==================================================================== 
+  /** ====================================================================
    * jsPDF JavaScript plugin
    * Copyright (c) 2013 Youssef Beddad, youssef.beddad@gmail.com
-   * 
-   * 
+   *
+   *
    * ====================================================================
    */
 
@@ -9022,7 +9022,7 @@
   		// pdf.internal.write("(page_" + (i + 1) + ")" + dests[i] + " 0
   		// R");
   		// }
-  		//				
+  		//
   		if (this.outline.root.children.length > 0) {
   			var lines = pdf.outline.render().split(/\r\n/);
   			for (var i = 0; i < lines.length; i++) {
@@ -9228,7 +9228,7 @@
    * jsPDF PNG PlugIn
    * Copyright (c) 2014 James Robb, https://github.com/jamesbrobb
    *
-   * 
+   *
    * ====================================================================
    */
 
@@ -9716,7 +9716,7 @@
 
   /**
    * jsPDF gif Support PlugIn
-   * Copyright (c) 2017 Aras Abbasi 
+   * Copyright (c) 2017 Aras Abbasi
    *
    * Licensed under the MIT License.
    * http://opensource.org/licenses/mit-license
@@ -9748,7 +9748,7 @@
 
   /**
    * jsPDF bmp Support PlugIn
-   * Copyright (c) 2018 Aras Abbasi 
+   * Copyright (c) 2018 Aras Abbasi
    *
    * Licensed under the MIT License.
    * http://opensource.org/licenses/mit-license
@@ -10021,7 +10021,7 @@
    *               2014 Diego Casorran, https://github.com/diegocr
    */
   /**
-   * 
+   *
    * ====================================================================
    */
 
@@ -10029,7 +10029,7 @@
     /**
      * Returns an array of length matching length of the 'word' string, with each
      * cell occupied by the width of the char in that position.
-     * 
+     *
      * @function
      * @param word {String}
      * @param widths {Object}
@@ -10072,7 +10072,7 @@
 
     /**
      * Calculate the sum of a number-array
-     * 
+     *
      * @name getArraySum
      * @public
      * @function
@@ -10343,7 +10343,7 @@
     };
   })(jsPDF.API);
 
-  /** @preserve 
+  /** @preserve
   jsPDF standard_fonts_metrics plugin
   Copyright (c) 2012 Willow Systems Corporation, willow-systems.com
   MIT license.
@@ -10355,9 +10355,9 @@
    # only 'uncompress' function is featured lower as JavaScript
    # if you want to unit test "roundtrip", just transcribe the reference
    # 'compress' function from Python into JavaScript
-   
+
    def compress(data):
-   
+
    	keys =   '0123456789abcdef'
    	values = 'klmnopqrstuvwxyz'
    	mapping = dict(zip(keys, values))
@@ -10370,7 +10370,7 @@
    		except:
    			keystring = key.join(["'","'"])
    			#print('Keystring is %s' % keystring)
-   
+
    		try:
    			if value < 0:
    				valuestring = hex(value)[3:]
@@ -10384,41 +10384,41 @@
    				valuestring = compress(value)
    			else:
    				raise Exception("Don't know what to do with value type %s" % type(value))
-   
+
    		vals.append(keystring+valuestring)
-   	
+
    	return '{' + ''.join(vals) + '}'
-   
+
    def uncompress(data):
-   
+
    	decoded = '0123456789abcdef'
    	encoded = 'klmnopqrstuvwxyz'
    	mapping = dict(zip(encoded, decoded))
-   
+
    	sign = +1
    	stringmode = False
    	stringparts = []
-   
+
    	output = {}
-   
+
    	activeobject = output
    	parentchain = []
-   
+
    	keyparts = ''
    	valueparts = ''
-   
+
    	key = None
-   
+
    	ending = set(encoded)
-   
+
    	i = 1
    	l = len(data) - 1 # stripping starting, ending {}
    	while i != l: # stripping {}
    		# -, {, }, ' are special.
-   
+
    		ch = data[i]
    		i += 1
-   
+
    		if ch == "'":
    			if stringmode:
    				# end of string mode
@@ -10431,7 +10431,7 @@
    		elif stringmode == True:
    			#print("Adding %s to stringpart" % ch)
    			stringparts.append(ch)
-   
+
    		elif ch == '{':
    			# start of object
    			parentchain.append( [activeobject, key] )
@@ -10445,7 +10445,7 @@
    			key = None
    			activeobject = parent
    			#DEBUG = False
-   
+
    		elif ch == '-':
    			sign = -1
    		else:
@@ -10471,15 +10471,15 @@
    					valueparts = ''
    				else:
    					valueparts += ch
-   
+
    			#debug(activeobject)
-   
+
    	return output
-   
+
    */
 
   	/**
-   Uncompresses data compressed into custom, base16-like format. 
+   Uncompresses data compressed into custom, base16-like format.
    @public
    @function
    @param
@@ -10573,7 +10573,7 @@
   		return output;
   	};
 
-  	// encoding = 'Unicode' 
+  	// encoding = 'Unicode'
   	// NOT UTF8, NOT UTF16BE/LE, NOT UCS2BE/LE. NO clever BOM behavior
   	// Actual 16bit char codes used.
   	// no multi-byte logic here
@@ -10582,8 +10582,8 @@
   	// {402: 131, 8211: 150, 8212: 151, 8216: 145, 8217: 146, 8218: 130, 8220: 147, 8221: 148, 8222: 132, 8224: 134, 8225: 135, 8226: 149, 8230: 133, 8364: 128, 8240:137, 8249: 139, 8250: 155, 710: 136, 8482: 153, 338: 140, 339: 156, 732: 152, 352: 138, 353: 154, 376: 159, 381: 142, 382: 158}
   	// as you can see, all Unicode chars are outside of 0-255 range. No char code conflicts.
   	// this means that you can give Win cp1252 encoded strings to jsPDF for rendering directly
-  	// as well as give strings with some (supported by these fonts) Unicode characters and 
-  	// these will be mapped to win cp1252 
+  	// as well as give strings with some (supported by these fonts) Unicode characters and
+  	// these will be mapped to win cp1252
   	// for example, you can send char code (cp1252) 0x80 or (unicode) 0x20AC, getting "Euro" glyph displayed in both cases.
 
   	var encodingBlock = {
@@ -10606,13 +10606,13 @@
   			//	, 'Symbol'
   			//	, 'ZapfDingbats'
   		}
-  		/** 
+  		/**
     Resources:
     Font metrics data is reprocessed derivative of contents of
     "Font Metrics for PDF Core 14 Fonts" package, which exhibits the following copyright and license:
-    
+
     Copyright (c) 1989, 1990, 1991, 1992, 1993, 1997 Adobe Systems Incorporated. All Rights Reserved.
-    
+
     This file and the 14 PostScript(R) AFM files it accompanies may be used,
     copied, and distributed for any purpose and without charge, with or without
     modification, provided that all copyright notices are retained; that the AFM
@@ -10620,7 +10620,7 @@
     file or any of the AFM files are prominently noted in the modified file(s);
     and that this paragraph is not modified. Adobe Systems has no responsibility
     or obligation to support the use of the AFM files.
-    
+
     */
   	},
   	    fontMetrics = { 'Unicode': {
@@ -10723,7 +10723,7 @@
       *
       * Supports:
       * paths
-      * 
+      *
       * @name addSvg
       * @public
       * @function
@@ -10879,7 +10879,7 @@
       * @param {String} alias of SVG-Image (if used multiple times)
       * @param {String} compression of the generated JPEG, can have the values 'NONE', 'FAST', 'MEDIUM' and 'SLOW'
       * @param {Number} rotation of the image in degrees (0-359)
-      * 
+      *
       * @returns jsPDF
       * @methodOf jsPDF#
       */
@@ -10915,11 +10915,11 @@
       };
   })(jsPDF.API);
 
-  /** ==================================================================== 
+  /** ====================================================================
    * jsPDF total_pages plugin
    * Copyright (c) 2013 Eduardo Menezes de Morais, eduardo.morais@usp.br
-   * 
-   * 
+   *
+   *
    * ====================================================================
    */
 
@@ -11167,11 +11167,11 @@
       };
   })(jsPDF.API);
 
-  /** ==================================================================== 
+  /** ====================================================================
    * jsPDF XMP metadata plugin
    * Copyright (c) 2016 Jussi Utunen, u-jussi@suomi24.fi
-   * 
-   * 
+   *
+   *
    * ====================================================================
    */
 
@@ -11440,10 +11440,10 @@
                                  if (Object.prototype.toString.call(text[s]) === '[object Array]') {
                   	cmapConfirm = fonts[key].metadata.cmap.unicode.codeMap[strText[s][0].charCodeAt(0)]; //Make sure the cmap has the corresponding glyph id
                                  } else {
-                                     
+
                                  }
                              //}
-                  
+
                          } else {
                   cmapConfirm = fonts[key].metadata.cmap.unicode.codeMap[strText[s].charCodeAt(0)]; //Make sure the cmap has the corresponding glyph id
                          }*/
@@ -12144,7 +12144,7 @@
   //
   // https://github.com/deanm/omggif
   //
-  // 
+  //
   //
   // omggif is a JavaScript implementation of a GIF 89a encoder and decoder,
   // including animation and compression.  It does not rely on any specific
@@ -12778,7 +12778,7 @@
     var cur = 0;
 
     var op = 0;  // Output pointer.
-    
+
     var subblock_size = code_stream[p++];
 
     // TODO(deanm): Would using a TypedArray be any faster?  At least it would
@@ -12861,7 +12861,7 @@
       }
 
       var k = chase;
-      
+
       var op_end = op + chase_length + (chase_code !== code ? 1 : 0);
       if (op_end > output_length) {
         console.log("Warning, gif stream longer than expected.");
@@ -12908,31 +12908,31 @@
   }
 
   try { exports.GifWriter = GifWriter; exports.GifReader = GifReader; } catch(e) { }  // CommonJS.
-  
+
 
   /*
     Copyright (c) 2008, Adobe Systems Incorporated
     All rights reserved.
 
-    Redistribution and use in source and binary forms, with or without 
+    Redistribution and use in source and binary forms, with or without
     modification, are permitted provided that the following conditions are
     met:
 
-    * Redistributions of source code must retain the above copyright notice, 
+    * Redistributions of source code must retain the above copyright notice,
       this list of conditions and the following disclaimer.
-    
+
     * Redistributions in binary form must reproduce the above copyright
-      notice, this list of conditions and the following disclaimer in the 
+      notice, this list of conditions and the following disclaimer in the
       documentation and/or other materials provided with the distribution.
-    
-    * Neither the name of Adobe Systems Incorporated nor the names of its 
-      contributors may be used to endorse or promote products derived from 
+
+    * Neither the name of Adobe Systems Incorporated nor the names of its
+      contributors may be used to endorse or promote products derived from
       this software without specific prior written permission.
 
     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
     IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
     THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
-    PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR 
+    PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
     CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
     EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
     PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
@@ -12957,7 +12957,7 @@
   	var UVDC_HT;
   	var YAC_HT;
   	var UVAC_HT;
-  	
+
   	var bitcode = new Array(65535);
   	var category = new Array(65535);
   	var outputfDCTQuant = new Array(64);
@@ -12965,14 +12965,14 @@
   	var byteout = [];
   	var bytenew = 0;
   	var bytepos = 7;
-  	
+
   	var YDU = new Array(64);
   	var UDU = new Array(64);
   	var VDU = new Array(64);
   	var clt = new Array(256);
   	var RGB_YUV_TABLE = new Array(2048);
   	var currentQuality;
-  	
+
   	var ZigZag = [
   			 0, 1, 5, 6,14,15,27,28,
   			 2, 4, 7,13,16,26,29,42,
@@ -12983,7 +12983,7 @@
   			21,34,37,47,50,56,59,61,
   			35,36,48,49,57,58,62,63
   		];
-  	
+
   	var std_dc_luminance_nrcodes = [0,0,1,5,1,1,1,1,1,1,0,0,0,0,0,0,0];
   	var std_dc_luminance_values = [0,1,2,3,4,5,6,7,8,9,10,11];
   	var std_ac_luminance_nrcodes = [0,0,2,1,3,3,2,4,3,5,5,4,4,0,0,1,0x7d];
@@ -13010,7 +13010,7 @@
   			0xf1,0xf2,0xf3,0xf4,0xf5,0xf6,0xf7,0xf8,
   			0xf9,0xfa
   		];
-  	
+
   	var std_dc_chrominance_nrcodes = [0,0,3,1,1,1,1,1,1,1,1,1,0,0,0,0,0];
   	var std_dc_chrominance_values = [0,1,2,3,4,5,6,7,8,9,10,11];
   	var std_ac_chrominance_nrcodes = [0,0,2,1,2,4,4,3,4,7,5,4,4,0,1,2,0x77];
@@ -13037,7 +13037,7 @@
   			0xea,0xf2,0xf3,0xf4,0xf5,0xf6,0xf7,0xf8,
   			0xf9,0xfa
   		];
-  	
+
   	function initQuantTables(sf){
   			var YQT = [
   				16, 11, 10, 16, 24, 40, 51, 61,
@@ -13049,7 +13049,7 @@
   				49, 64, 78, 87,103,121,120,101,
   				72, 92, 95, 98,112,100,103, 99
   			];
-  			
+
   			for (var i = 0; i < 64; i++) {
   				var t = ffloor((YQT[i]*sf+50)/100);
   				if (t < 1) {
@@ -13093,7 +13093,7 @@
   				}
   			}
   		}
-  		
+
   		function computeHuffmanTbl(nrcodes, std_table){
   			var codevalue = 0;
   			var pos_in_table = 0;
@@ -13110,7 +13110,7 @@
   			}
   			return HT;
   		}
-  		
+
   		function initHuffmanTbl()
   		{
   			YDC_HT = computeHuffmanTbl(std_dc_luminance_nrcodes,std_dc_luminance_values);
@@ -13118,7 +13118,7 @@
   			YAC_HT = computeHuffmanTbl(std_ac_luminance_nrcodes,std_ac_luminance_values);
   			UVAC_HT = computeHuffmanTbl(std_ac_chrominance_nrcodes,std_ac_chrominance_values);
   		}
-  	
+
   		function initCategoryNumber()
   		{
   			var nrlower = 1;
@@ -13142,7 +13142,7 @@
   				nrupper <<= 1;
   			}
   		}
-  		
+
   		function initRGBYUVTable() {
   			for(var i = 0; i < 256;i++) {
   				RGB_YUV_TABLE[i]      		=  19595 * i;
@@ -13155,7 +13155,7 @@
   				RGB_YUV_TABLE[(i+1792)>>0] 	= - 5329 * i;
   			}
   		}
-  		
+
   		// IO functions
   		function writeBits(bs)
   		{
@@ -13180,19 +13180,19 @@
   				}
   			}
   		}
-  	
+
   		function writeByte(value)
   		{
   			//byteout.push(clt[value]); // write char directly instead of converting later
         byteout.push(value);
   		}
-  	
+
   		function writeWord(value)
   		{
   			writeByte((value>>8)&0xFF);
   			writeByte((value   )&0xFF);
   		}
-  		
+
   		// DCT & quantization core
   		function fDCTQuant(data, fdtbl)
   		{
@@ -13212,7 +13212,7 @@
   				d5 = data[dataOff+5];
   				d6 = data[dataOff+6];
   				d7 = data[dataOff+7];
-  				
+
   				var tmp0 = d0 + d7;
   				var tmp7 = d0 - d7;
   				var tmp1 = d1 + d6;
@@ -13221,42 +13221,42 @@
   				var tmp5 = d2 - d5;
   				var tmp3 = d3 + d4;
   				var tmp4 = d3 - d4;
-  	
+
   				/* Even part */
   				var tmp10 = tmp0 + tmp3;	/* phase 2 */
   				var tmp13 = tmp0 - tmp3;
   				var tmp11 = tmp1 + tmp2;
   				var tmp12 = tmp1 - tmp2;
-  	
+
   				data[dataOff] = tmp10 + tmp11; /* phase 3 */
   				data[dataOff+4] = tmp10 - tmp11;
-  	
+
   				var z1 = (tmp12 + tmp13) * 0.707106781; /* c4 */
   				data[dataOff+2] = tmp13 + z1; /* phase 5 */
   				data[dataOff+6] = tmp13 - z1;
-  	
+
   				/* Odd part */
   				tmp10 = tmp4 + tmp5; /* phase 2 */
   				tmp11 = tmp5 + tmp6;
   				tmp12 = tmp6 + tmp7;
-  	
+
   				/* The rotator is modified from fig 4-8 to avoid extra negations. */
   				var z5 = (tmp10 - tmp12) * 0.382683433; /* c6 */
   				var z2 = 0.541196100 * tmp10 + z5; /* c2-c6 */
   				var z4 = 1.306562965 * tmp12 + z5; /* c2+c6 */
   				var z3 = tmp11 * 0.707106781; /* c4 */
-  	
+
   				var z11 = tmp7 + z3;	/* phase 5 */
   				var z13 = tmp7 - z3;
-  	
+
   				data[dataOff+5] = z13 + z2;	/* phase 6 */
   				data[dataOff+3] = z13 - z2;
   				data[dataOff+1] = z11 + z4;
   				data[dataOff+7] = z11 - z4;
-  	
+
   				dataOff += 8; /* advance pointer to next row */
   			}
-  	
+
   			/* Pass 2: process columns. */
   			dataOff = 0;
   			for (i=0; i<I8; ++i)
@@ -13269,7 +13269,7 @@
   				d5 = data[dataOff + 40];
   				d6 = data[dataOff + 48];
   				d7 = data[dataOff + 56];
-  				
+
   				var tmp0p2 = d0 + d7;
   				var tmp7p2 = d0 - d7;
   				var tmp1p2 = d1 + d6;
@@ -13278,42 +13278,42 @@
   				var tmp5p2 = d2 - d5;
   				var tmp3p2 = d3 + d4;
   				var tmp4p2 = d3 - d4;
-  	
+
   				/* Even part */
   				var tmp10p2 = tmp0p2 + tmp3p2;	/* phase 2 */
   				var tmp13p2 = tmp0p2 - tmp3p2;
   				var tmp11p2 = tmp1p2 + tmp2p2;
   				var tmp12p2 = tmp1p2 - tmp2p2;
-  	
+
   				data[dataOff] = tmp10p2 + tmp11p2; /* phase 3 */
   				data[dataOff+32] = tmp10p2 - tmp11p2;
-  	
+
   				var z1p2 = (tmp12p2 + tmp13p2) * 0.707106781; /* c4 */
   				data[dataOff+16] = tmp13p2 + z1p2; /* phase 5 */
   				data[dataOff+48] = tmp13p2 - z1p2;
-  	
+
   				/* Odd part */
   				tmp10p2 = tmp4p2 + tmp5p2; /* phase 2 */
   				tmp11p2 = tmp5p2 + tmp6p2;
   				tmp12p2 = tmp6p2 + tmp7p2;
-  	
+
   				/* The rotator is modified from fig 4-8 to avoid extra negations. */
   				var z5p2 = (tmp10p2 - tmp12p2) * 0.382683433; /* c6 */
   				var z2p2 = 0.541196100 * tmp10p2 + z5p2; /* c2-c6 */
   				var z4p2 = 1.306562965 * tmp12p2 + z5p2; /* c2+c6 */
   				var z3p2 = tmp11p2 * 0.707106781; /* c4 */
-  	
+
   				var z11p2 = tmp7p2 + z3p2;	/* phase 5 */
   				var z13p2 = tmp7p2 - z3p2;
-  	
+
   				data[dataOff+40] = z13p2 + z2p2; /* phase 6 */
   				data[dataOff+24] = z13p2 - z2p2;
   				data[dataOff+ 8] = z11p2 + z4p2;
   				data[dataOff+56] = z11p2 - z4p2;
-  	
+
   				dataOff++; /* advance pointer to next column */
   			}
-  	
+
   			// Quantize/descale the coefficients
   			var fDCTQuant;
   			for (i=0; i<I64; ++i)
@@ -13326,7 +13326,7 @@
   			}
   			return outputfDCTQuant;
   		}
-  		
+
   		function writeAPP0()
   		{
   			writeWord(0xFFE0); // marker
@@ -13344,7 +13344,7 @@
   			writeByte(0); // thumbnwidth
   			writeByte(0); // thumbnheight
   		}
-  	
+
   		function writeSOF0(width, height)
   		{
   			writeWord(0xFFC0); // marker
@@ -13363,7 +13363,7 @@
   			writeByte(0x11); // HVV
   			writeByte(1);    // QTV
   		}
-  	
+
   		function writeDQT()
   		{
   			writeWord(0xFFDB); // marker
@@ -13377,12 +13377,12 @@
   				writeByte(UVTable[j]);
   			}
   		}
-  	
+
   		function writeDHT()
   		{
   			writeWord(0xFFC4); // marker
   			writeWord(0x01A2); // length
-  	
+
   			writeByte(0); // HTYDCinfo
   			for (var i=0; i<16; i++) {
   				writeByte(std_dc_luminance_nrcodes[i+1]);
@@ -13390,7 +13390,7 @@
   			for (var j=0; j<=11; j++) {
   				writeByte(std_dc_luminance_values[j]);
   			}
-  	
+
   			writeByte(0x10); // HTYACinfo
   			for (var k=0; k<16; k++) {
   				writeByte(std_ac_luminance_nrcodes[k+1]);
@@ -13398,7 +13398,7 @@
   			for (var l=0; l<=161; l++) {
   				writeByte(std_ac_luminance_values[l]);
   			}
-  	
+
   			writeByte(1); // HTUDCinfo
   			for (var m=0; m<16; m++) {
   				writeByte(std_dc_chrominance_nrcodes[m+1]);
@@ -13406,7 +13406,7 @@
   			for (var n=0; n<=11; n++) {
   				writeByte(std_dc_chrominance_values[n]);
   			}
-  	
+
   			writeByte(0x11); // HTUACinfo
   			for (var o=0; o<16; o++) {
   				writeByte(std_ac_chrominance_nrcodes[o+1]);
@@ -13415,7 +13415,7 @@
   				writeByte(std_ac_chrominance_values[p]);
   			}
   		}
-  	
+
   		function writeSOS()
   		{
   			writeWord(0xFFDA); // marker
@@ -13431,7 +13431,7 @@
   			writeByte(0x3f); // Se
   			writeByte(0); // Bf
   		}
-  		
+
   		function processDU(CDU, fdtbl, DC, HTDC, HTAC){
   			var EOB = HTAC[0x00];
   			var M16zeroes = HTAC[0xF0];
@@ -13489,18 +13489,18 @@
   				clt[i] = sfcc(i);
   			}
   		}
-  		
+
   		this.encode = function(image,quality) // image data object
   		{
   			var time_start = new Date().getTime();
-  			
+
   			if(quality) setQuality(quality);
-  			
+
   			// Initialize bit writer
   			byteout = new Array();
   			bytenew=0;
   			bytepos=7;
-  	
+
   			// Add JPEG headers
   			writeWord(0xFFD8); // SOI
   			writeAPP0();
@@ -13509,16 +13509,16 @@
   			writeDHT();
   			writeSOS();
 
-  	
+
   			// Encode 8x8 macroblocks
   			var DCY=0;
   			var DCU=0;
   			var DCV=0;
-  			
+
   			bytenew=0;
   			bytepos=7;
-  			
-  			
+
+
   			this.encode.displayName = "_encode_";
 
   			var imageData = image.data;
@@ -13526,7 +13526,7 @@
   			var height = image.height;
 
   			var quadWidth = width*4;
-  			
+
   			var x, y = 0;
   			var r, g, b;
   			var start,p, col,row,pos;
@@ -13537,38 +13537,38 @@
   				p = start;
   				col = -1;
   				row = 0;
-  				
+
   				for(pos=0; pos < 64; pos++){
   					row = pos >> 3;// /8
   					col = ( pos & 7 ) * 4; // %8
-  					p = start + ( row * quadWidth ) + col;		
-  					
+  					p = start + ( row * quadWidth ) + col;
+
   					if(y+row >= height){ // padding bottom
   						p-= (quadWidth*(y+1+row-height));
   					}
 
-  					if(x+col >= quadWidth){ // padding right	
+  					if(x+col >= quadWidth){ // padding right
   						p-= ((x+col) - quadWidth +4);
   					}
-  					
+
   					r = imageData[ p++ ];
   					g = imageData[ p++ ];
   					b = imageData[ p++ ];
-  					
-  					
+
+
   					/* // calculate YUV values dynamically
   					YDU[pos]=((( 0.29900)*r+( 0.58700)*g+( 0.11400)*b))-128; //-0x80
   					UDU[pos]=(((-0.16874)*r+(-0.33126)*g+( 0.50000)*b));
   					VDU[pos]=((( 0.50000)*r+(-0.41869)*g+(-0.08131)*b));
   					*/
-  					
+
   					// use lookup table (slightly faster)
   					YDU[pos] = ((RGB_YUV_TABLE[r]             + RGB_YUV_TABLE[(g +  256)>>0] + RGB_YUV_TABLE[(b +  512)>>0]) >> 16)-128;
   					UDU[pos] = ((RGB_YUV_TABLE[(r +  768)>>0] + RGB_YUV_TABLE[(g + 1024)>>0] + RGB_YUV_TABLE[(b + 1280)>>0]) >> 16)-128;
   					VDU[pos] = ((RGB_YUV_TABLE[(r + 1280)>>0] + RGB_YUV_TABLE[(g + 1536)>>0] + RGB_YUV_TABLE[(b + 1792)>>0]) >> 16)-128;
 
   				}
-  				
+
   				DCY = processDU(YDU, fdtbl_Y, DCY, YDC_HT, YAC_HT);
   				DCU = processDU(UDU, fdtbl_UV, DCU, UVDC_HT, UVAC_HT);
   				DCV = processDU(VDU, fdtbl_UV, DCV, UVDC_HT, UVAC_HT);
@@ -13576,10 +13576,10 @@
   				}
   				y+=8;
   			}
-  			
-  			
+
+
   			////////////////////////////////////////////////////////////////
-  	
+
   			// Do the bit alignment of the EOI marker
   			if ( bytepos >= 0 ) {
   				var fillbits = [];
@@ -13587,24 +13587,24 @@
   				fillbits[0] = (1<<(bytepos+1))-1;
   				writeBits(fillbits);
   			}
-  	
+
   			writeWord(0xFFD9); //EOI
 
         return new Uint8Array(byteout);
         //return new Buffer(byteout);
 
   			var jpegDataUri = 'data:image/jpeg;base64,' + btoa(byteout.join(''));
-  			
+
   			byteout = [];
-  			
+
   			// benchmarking
   			var duration = new Date().getTime() - time_start;
       		//console.log('Encoding time: '+ duration + 'ms');
       		//
-  			
-  			return jpegDataUri			
+
+  			return jpegDataUri
   	};
-  	
+
   	function setQuality(quality){
   		if (quality <= 0) {
   			quality = 1;
@@ -13612,21 +13612,21 @@
   		if (quality > 100) {
   			quality = 100;
   		}
-  		
+
   		if(currentQuality == quality) return // don't recalc if unchanged
-  		
+
   		var sf = 0;
   		if (quality < 50) {
   			sf = Math.floor(5000 / quality);
   		} else {
   			sf = Math.floor(200 - quality*2);
   		}
-  		
+
   		initQuantTables(sf);
   		currentQuality = quality;
   		//console.log('Quality set to: '+quality +'%');
   	}
-  	
+
   	function init(){
   		var time_start = new Date().getTime();
   		if(!quality) quality = 50;
@@ -13635,14 +13635,14 @@
   		initHuffmanTbl();
   		initCategoryNumber();
   		initRGBYUVTable();
-  		
+
   		setQuality(quality);
   		var duration = new Date().getTime() - time_start;
       	//console.log('Initialization '+ duration + 'ms');
   	}
-  	
+
   	init();
-  	
+
   }
 
 
@@ -13669,32 +13669,32 @@
   }
 
   BmpDecoder.prototype.parseHeader = function() {
-    this.fileSize = this.datav.getUint32(this.pos, true); 
+    this.fileSize = this.datav.getUint32(this.pos, true);
     this.pos += 4;
-    this.reserved = this.datav.getUint32(this.pos, true); 
+    this.reserved = this.datav.getUint32(this.pos, true);
     this.pos += 4;
-    this.offset = this.datav.getUint32(this.pos, true); 
+    this.offset = this.datav.getUint32(this.pos, true);
     this.pos += 4;
-    this.headerSize = this.datav.getUint32(this.pos, true); 
+    this.headerSize = this.datav.getUint32(this.pos, true);
     this.pos += 4;
-    this.width = this.datav.getUint32(this.pos, true); 
+    this.width = this.datav.getUint32(this.pos, true);
     this.pos += 4;
     this.height = this.datav.getInt32(this.pos, true);  this.pos += 4;
-    this.planes = this.datav.getUint16(this.pos, true); 
+    this.planes = this.datav.getUint16(this.pos, true);
     this.pos += 2;
-    this.bitPP = this.datav.getUint16(this.pos, true); 
+    this.bitPP = this.datav.getUint16(this.pos, true);
     this.pos += 2;
-    this.compress = this.datav.getUint32(this.pos, true); 
+    this.compress = this.datav.getUint32(this.pos, true);
     this.pos += 4;
-    this.rawSize = this.datav.getUint32(this.pos, true); 
+    this.rawSize = this.datav.getUint32(this.pos, true);
     this.pos += 4;
-    this.hr = this.datav.getUint32(this.pos, true); 
+    this.hr = this.datav.getUint32(this.pos, true);
     this.pos += 4;
-    this.vr = this.datav.getUint32(this.pos, true); 
+    this.vr = this.datav.getUint32(this.pos, true);
     this.pos += 4;
-    this.colors = this.datav.getUint32(this.pos, true); 
+    this.colors = this.datav.getUint32(this.pos, true);
     this.pos += 4;
-    this.importantColors = this.datav.getUint32(this.pos, true); 
+    this.importantColors = this.datav.getUint32(this.pos, true);
     this.pos += 4;
 
     if(this.bitPP === 16 && this.is_with_alpha){
@@ -13825,7 +13825,7 @@
       var line = this.bottom_up ? y : this.height - 1 - y;
       for (var x = 0; x < this.width; x++) {
 
-        var B = this.datav.getUint16(this.pos, true); 
+        var B = this.datav.getUint16(this.pos, true);
         this.pos+=2;
         var blue = (B & _1_5) / _1_5 * 255 | 0;
         var green = (B >> 5 & _1_5 ) / _1_5 * 255 | 0;
@@ -13851,7 +13851,7 @@
       var line = this.bottom_up ? y : this.height - 1 - y;
       for (var x = 0; x < this.width; x++) {
 
-        var B = this.datav.getUint16(this.pos, true); 
+        var B = this.datav.getUint16(this.pos, true);
         this.pos+=2;
         var alpha = 0xFF;
         var blue = (B & _1_5) / _1_5 * 255 | 0;
@@ -13911,7 +13911,7 @@
     return this.data;
   };
 
-  try { 
+  try {
   	module.exports = function(bmpData) {
   		  var decoder = new BmpDecoder(bmpData);
   		  return {
@@ -13921,7 +13921,7 @@
   		  };
   		};
   } catch(e) { }  // CommonJS.
-  
+
 
   /*
    Copyright (c) 2013 Gildas Lormeau. All rights reserved.
@@ -13932,8 +13932,8 @@
    1. Redistributions of source code must retain the above copyright notice,
    this list of conditions and the following disclaimer.
 
-   2. Redistributions in binary form must reproduce the above copyright 
-   notice, this list of conditions and the following disclaimer in 
+   2. Redistributions in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in
    the documentation and/or other materials provided with the distribution.
 
    3. The names of the authors may not be used to endorse or promote products
@@ -15529,7 +15529,7 @@
   		function deflateReset(strm) {
   			strm.total_in = strm.total_out = 0;
   			strm.msg = null; //
-  			
+
   			that.pending = 0;
   			that.pending_out = 0;
 
@@ -15988,9 +15988,9 @@
    * @link   http://www.phpied.com/rgb-color-parser-in-javascript/
    * @license Use it if you like it
    */
-   
+
   (function ( global ) {
-   
+
   	function RGBColor(color_string)
   	{
   		this.ok = false;
@@ -16286,7 +16286,7 @@
       }
 
       global.RGBColor = RGBColor;
-  	
+
   }(typeof self !== "undefined" && self || typeof window !== "undefined" && window || typeof global !== "undefined" && global ||  Function('return typeof this === "object" && this.content')() || Function('return this')()));
   // `self` is undefined in Firefox for Android content script context
   // while `this` is nsIContentFrameMessageManager
@@ -21532,8 +21532,8 @@
   # PNG.js
   # Copyright (c) 2011 Devon Govett
   # MIT LICENSE
-  # 
-  # 
+  #
+  #
   */
 
 
@@ -21740,14 +21740,14 @@
         var fullPixels = new Uint8Array(this.width * this.height * pixelBytes);
         var pos = 0;
         var _this = this;
-        
+
         if (data == null) {
             data = this.imgData;
         }
         if (data.length === 0) {
             return new Uint8Array(0);
         }
-        
+
         data = new FlateStream(data);
         data = data.getBytes();
         function pass (x0, y0, dx, dy) {
@@ -22040,7 +22040,7 @@
    *               Justin D'Arcangelo <justindarc@gmail.com>
    *               Yury Delendik
    *
-   * 
+   *
    */
 
   var DecodeStream = (function() {
@@ -22229,7 +22229,7 @@
       0x50001, 0x50011, 0x50009, 0x50019, 0x50005, 0x50015, 0x5000d, 0x5001d,
       0x50003, 0x50013, 0x5000b, 0x5001b, 0x50007, 0x50017, 0x5000f, 0x00000
     ]), 5];
-    
+
     function error(e) {
         throw new Error(e)
     }
@@ -22486,13 +22486,13 @@
    */
 
   (function (global) {
-      
+
       if (typeof global.console !== "object") {
           // Console-polyfill. MIT license.
           // https://github.com/paulmillr/console-polyfill
           // Make it safe to do console.log() always.
           global.console = {};
-          
+
           var con = global.console;
           var prop, method;
           var dummy = function() {};
@@ -22640,7 +22640,7 @@
               }
           };
       }
-      
+
       if (!Object.keys) {
           Object.keys = (function () {
 
@@ -22673,7 +22673,7 @@
               };
           }());
       }
-      
+
       if (typeof Object.assign != 'function') {
             Object.assign = function(target) {
               if (target == null) {
