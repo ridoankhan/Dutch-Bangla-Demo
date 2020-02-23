@@ -48,7 +48,6 @@ $(document).ready(function() {
         contentType: "application/json",
         url: "http://115.127.24.181:9091/statement/" + statementId,
         success: function(response) {
-            console.log(response);
             globalObj = response;
 
             $("#fullNameIDTd").html(response.account.customer.customerName);
@@ -76,7 +75,6 @@ $(document).ready(function() {
     });
 
     $("#verifyButton").click(function() {
-
         $.ajax({
             type: "get",
             url: "http://115.127.24.181:9092/verify/" + tx,
@@ -84,7 +82,7 @@ $(document).ready(function() {
             contentType: "application/json",
             success: function(response) {
                 var block = JSON.parse(response);
-                console.log(block);
+                // console.log(block);
                 if ((globalObj.account.customer.customerName == block.accountName) &&
                     (globalObj.account.accountNumber == block.accountNumber) &&
                     (globalObj.closing_balance == block.endBalance) &&
@@ -100,6 +98,13 @@ $(document).ready(function() {
                 } else {
                     afterFailure();
                 }
+            },
+            error: function(err) {
+                // console.log(err);
+                alert("Transaction Hash No Found");
+                afterFailure();
+
+
             }
         });
 
@@ -117,12 +122,12 @@ $(document).ready(function() {
             url: "http://115.127.24.181:9091/auth/login",
             data: loginObj,
             success: function(response) {
-                console.log(response);
+                // console.log(response);
                 $('#mainContents').show();
                 document.getElementById('id01').style.display = 'none';
             },
             error: function(err) {
-                console.log(err);
+                // console.log(err);
             }
         });
     });
