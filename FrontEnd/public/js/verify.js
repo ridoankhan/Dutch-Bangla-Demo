@@ -68,7 +68,11 @@ $(document).ready(function() {
         },
         error: function(response) {
             // console.log(response);
-            alert("No Related Information Found");
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'No Related Information Found!!'
+            });
             $("#verifyButton").remove();
             $("#verifyIconFail").show();
         }
@@ -101,9 +105,12 @@ $(document).ready(function() {
             },
             error: function(err) {
                 // console.log(err);
-                alert("Transaction Hash No Found");
-                afterFailure();
-
+                // alert("Transaction Hash No Found");
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error...',
+                    text: 'Transaction Hash Does Not Match with Blockchain'
+                }).then(afterFailure());
 
             }
         });
