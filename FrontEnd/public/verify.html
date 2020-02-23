@@ -254,25 +254,20 @@
     <!-- login -->
     <!-- <button onclick="document.getElementById('id01').style.display='block'" style="width:auto; margin-top:100px;">Login</button> -->
 
-    <div id="id01" class="modal">
+    <div id="id01" class="modal" style="padding-top: 10vw;">
 
-        <div class="modal-content animate">
+        <div class="modal-content animate text-center">
 
-            <div class="container">
-                <label for="uname"><b>Username</b></label>
-                <input id="userName" type="text" placeholder="Enter Username" required>
-
-                <label for="psw"><b>Password</b></label>
-                <input id="password" type="password" placeholder="Enter Password" required>
-
-                <button id="loginbtn">Login</button>
-
+            <div class="container text-center">
+                <div class="text-center" style="padding-right: 10vw;">
+                    <input id="userName" type="text" placeholder="Enter Username" required>
+                    <br>
+                    <input id="password" type="password" placeholder="Enter Password" required>
+                    <br>
+                    <button id="loginbtn" class="text-center">Login</button>
+                </div>
             </div>
 
-            <div class="container" style="background-color:#f1f1f1">
-                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                <span class="psw">Forgot <a href="#">password?</a></span>
-            </div>
         </div>
     </div>
 
