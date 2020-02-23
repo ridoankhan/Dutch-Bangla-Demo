@@ -7,11 +7,7 @@ body {
 
 input[type=text],
 input[type=password] {
-<<<<<<< HEAD
-    width: 50%;
-=======
     width: 70%;
->>>>>>> b04298b2df92a51f3bbf7d43feefc71a439858ed
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
