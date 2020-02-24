@@ -35,6 +35,16 @@ $(document).ready(function() {
         pdf.setTextColor(0, 0, 0);
     }
 
+    function setFontStyle(style) {
+        if (style === "bold") {
+            pdf.setFontSize(7);
+            pdf.setFontType("bold");
+        } else {
+            pdf.setFontSize(6);
+            pdf.setFontType("normal");
+        }
+    }
+
     function addFirstRow() {
         const numOfCols = 3;
         const marginTop = currentMarginTop;
@@ -57,7 +67,7 @@ $(document).ready(function() {
             let heightAdded = addText(
                 info,
                 branchMarginLeft,
-                marginTop + rowHeight,
+                marginTop + colHeight,
                 colWidth,
                 options,
             );
@@ -69,12 +79,17 @@ $(document).ready(function() {
         const qrHeight = addQrCode(
             qrMarginLeft,
             currentMarginTop,
-            colWidth / 3,
-            colWidth / 3,
+            colHeight,
+            colHeight,
         );
-        const heightAdded = addLink(qrMarginLeft, currentMarginTop + colWidth / 3);
-        rowHeight = adjustRowHeight(rowHeight, qrHeight + heightAdded);
-        adjustTopMargin(currentMarginTop, rowHeight);
+
+        const varifierTopMargin = currentMarginTop + qrHeight + lineHeigth;
+        setFontStyle("bold");
+        const height = addLink(qrMarginLeft, varifierTopMargin);
+        setFontStyle("normal");
+
+        rowHeight = adjustRowHeight(rowHeight, varifierTopMargin + height);
+        adjustTopMargin(currentMarginTop, 0);
     }
 
     function addSecondRow() {
@@ -125,7 +140,8 @@ $(document).ready(function() {
             firstColInfo,
             margins.left,
             currentMarginTop,
-            colWidth, {},
+            colWidth,
+            {},
         );
         rowHeight = adjustRowHeight(rowHeight, colHeight);
 
@@ -133,19 +149,22 @@ $(document).ready(function() {
             thirdColFirstInfo,
             margins.left + (colWidth * 3) / 2,
             currentMarginTop,
-            colWidth, {},
+            colWidth,
+            {},
         );
         colHeight = addColumn(
             thirdColSecondInfo,
             margins.left + (colWidth * 4) / 2.2,
             currentMarginTop,
-            colWidth, {},
+            colWidth,
+            {},
         );
         colHeight = addColumn(
             thirdColThirdInfo,
             margins.left + (colWidth * 4) / 2.1,
             currentMarginTop,
-            colWidth, {},
+            colWidth,
+            {},
         );
         rowHeight = adjustRowHeight(rowHeight, colHeight);
         adjustTopMargin(rowHeight, 0);
@@ -158,7 +177,8 @@ $(document).ready(function() {
             "ONLINE STATEMENT",
             margins.left + colWidth,
             currentMarginTop,
-            colWidth, {},
+            colWidth,
+            {},
         );
         adjustTopMargin(rowHeight, 0);
     }
@@ -212,7 +232,8 @@ $(document).ready(function() {
             "STATEMENT CLOSING BALANCE",
             margins.left + colWidth / 2,
             currentMarginTop,
-            colWidth * 2, {},
+            colWidth * 2,
+            {},
         );
 
         const endingStatement = $("#endingStatement").text();
@@ -220,7 +241,8 @@ $(document).ready(function() {
             endingStatement,
             margins.left + colWidth * 5,
             currentMarginTop,
-            colWidth, { align: "right" },
+            colWidth,
+            { align: "right" },
         );
 
         adjustTopMargin(heightAdded, 0);
@@ -250,27 +272,31 @@ $(document).ready(function() {
             firstColInfo,
             margins.left + colWidth / 2,
             currentMarginTop,
-            colWidth, {},
+            colWidth,
+            {},
         );
         rowHeight = adjustRowHeight(rowHeight, colHeight);
         colHeight = addColumn(
             secondColInfo,
             margins.left + (colWidth * 3) / 2,
             currentMarginTop,
-            colWidth, { align: "right" },
+            colWidth,
+            { align: "right" },
         );
         rowHeight = adjustRowHeight(rowHeight, colHeight);
         colHeight = addColumn(
             thirdColInfo,
             margins.left + colWidth * 2,
             currentMarginTop + lineHeigth,
-            colWidth, {},
+            colWidth,
+            {},
         );
         colHeight = addColumn(
             fourthColInfo,
             margins.left + (colWidth * 5) / 2,
             currentMarginTop + lineHeigth,
-            colWidth, {},
+            colWidth,
+            {},
         );
         adjustTopMargin(rowHeight, lineHeigth);
 
@@ -278,14 +304,16 @@ $(document).ready(function() {
             "*   =   UNAUTH ENTRY   /   R   =   REVERSAL",
             margins.left + colWidth / 2,
             currentMarginTop,
-            colWidth * 2, {},
+            colWidth * 2,
+            {},
         );
         adjustTopMargin(heightAdded, lineHeigth);
         heightAdded = addText(
             `- - - - - - - - - - - - - - - - - - - - - - - - END OF STATEMENT - - - - - - - - - - - - - - - - - - - - - - - -`,
             margins.left + (colWidth * 3) / 2,
             currentMarginTop,
-            colWidth * 3, {},
+            colWidth * 3,
+            {},
         );
         adjustTopMargin(heightAdded, lineHeigth);
     }
@@ -298,7 +326,8 @@ $(document).ready(function() {
             text,
             margins.left,
             currentMarginTop,
-            colWidth, {},
+            colWidth,
+            {},
         );
         adjustTopMargin(heightAdded, lineHeigth);
     }
@@ -372,19 +401,9 @@ $(document).ready(function() {
     }
 
     function addLink(marginLeft, marginTop) {
-        const url = $("linkAddress").attr('href');
-        console.log(url);
-
-        // var addr = "http://115.127.24.181/verify.html?statementId=" + lnk;
-        console.log(marginLeft);
-
-        console.log(marginTop);
-        pdf.textWithLink('Verify Here', marginLeft, marginTop, {
-            url: url,
-            orientation: "p",
-            lineHeight: lineHeigth,
+        pdf.textWithLink("Click here to verify", marginLeft, marginTop, {
+            url: getQrUrl(),
         });
-
         return lineHeigth;
     }
 });

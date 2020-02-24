@@ -1,7 +1,9 @@
+var qrUrl = null;
+
 $("#CreateCon").click(function() {
     $("#publishingModal").modal();
-    var txHash = '';
-    var statementId = '';
+    var txHash = "";
+    //var statementId = '';
 
     var obj = {
         customerId: $("#customerId").html(),
@@ -14,13 +16,13 @@ $("#CreateCon").click(function() {
         crCount: $("#crCount").html(),
         drCount: $("#drCount").html(),
         dateStart: $("#startDate").val(),
-        dateEnd: $("#endDate").val()
-
+        dateEnd: $("#endDate").val(),
     };
 
     $.ajax({
         type: "GET",
-        url: "http://115.127.24.181:9092/nonce/0xeE21a5572f6089924AF72019F653E32812e87cF4",
+        url:
+            "http://115.127.24.181:9092/nonce/0xeE21a5572f6089924AF72019F653E32812e87cF4",
         success: function(response) {
             console.log(response.nonce);
             let nonce = response.nonce;
@@ -28,25 +30,30 @@ $("#CreateCon").click(function() {
             obj.nonce = nonce;
 
             // console.log("Aita holo amader Obj", obj);
-            function genarateQR() {
+            function genarateQR(statementId) {
+                qrUrl =
+                    "http://115.127.24.181:9090/verify.html?statementId=" +
+                    statementId;
                 return new QRCode("qrcode", {
-                    text: "http://115.127.24.181:9090/verify.html?statementId=" + statementId,
+                    text: qrUrl,
                     width: $(this).width() / 15,
                     height: $(this).width() / 15,
                     colorDark: "#000000",
                     colorLight: "#FFFFFF",
-                    correctLevel: QRCode.CorrectLevel.H
+                    correctLevel: QRCode.CorrectLevel.H,
                 });
             }
 
             $.ajax({
-                type: 'post',
+                type: "post",
                 contentType: "application/json",
                 url: "http://115.127.24.181:9092/publish",
                 data: JSON.stringify(obj),
                 success: function(response) {
                     console.log(response);
-                    $('#rowLoader').html("<h2 style='color:green;'>Data Successfully Published in Blockchain</h2>");
+                    $("#rowLoader").html(
+                        "<h2 style='color:green;'>Data Successfully Published in Blockchain</h2>",
+                    );
                     $("#modalTitleHead").hide();
                     txHash = response;
                     // genarateQR();
@@ -64,10 +71,9 @@ $("#CreateCon").click(function() {
                         credits: $("#finalCredits").html(),
                         dr_count: $("#drCount").html(),
                         cr_count: $("#crCount").html(),
-                        uncollected_funds: "0.00"
+                        uncollected_funds: "0.00",
                     };
-                    console.log("This is My own Created Object ",
-                        statementObj);
+                    console.log("This is My own Created Object ", statementObj);
 
                     $.ajax({
                         type: "post",
@@ -77,26 +83,30 @@ $("#CreateCon").click(function() {
                         success: function(response) {
                             console.log(response);
                             statementId = response.id;
-                            genarateQR();
-                            var address = "http://115.127.24.181:9090/verify.html?statementId=" + statementId;
+                            genarateQR(response.id);
+                            var address =
+                                "http://115.127.24.181:9090/verify.html?statementId=" +
+                                statementId;
                             $("#linkAddress").show();
-                            $("#linkAddress").attr('href', address);
-                            $("#linkAddress").css('color', 'black');
+                            $("#linkAddress").attr("href", address);
+                            $("#linkAddress").css("color", "black");
                         },
                         error: function(err) {
                             console.log(err);
-                        }
+                        },
                     });
                 },
                 error: function(err) {
                     console.log(err);
-
-                }
+                },
             });
         },
         error: function(err) {
             console.log(err);
-
-        }
+        },
     });
 });
+
+function getQrUrl() {
+    return qrUrl;
+}
