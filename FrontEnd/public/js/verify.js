@@ -18,7 +18,7 @@ function convertTime(time) {
 }
 
 function hashAccountNumber(accountNumber) {
-    let accountNo = accountNumber.split('');
+    let accountNo = accountNumber.toString().split('');
     for (let i = 2; i < accountNo.length - 3; i++) {
         accountNo[i] = "x";
     }
