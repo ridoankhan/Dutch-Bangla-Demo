@@ -50,6 +50,7 @@ $(document).ready(function() {
         ];
 
         let rowHeight = 0;
+        let colHeight = 0;
         let options = {};
 
         branchInfo.forEach(info => {
@@ -60,8 +61,10 @@ $(document).ready(function() {
                 colWidth,
                 options,
             );
-            rowHeight += heightAdded;
+            colHeight += heightAdded;
         });
+
+        rowHeight = adjustRowHeight(rowHeight, colHeight);
 
         const qrHeight = addQrCode(
             qrMarginLeft,
@@ -69,8 +72,9 @@ $(document).ready(function() {
             colWidth / 3,
             colWidth / 3,
         );
-        rowHeight = adjustRowHeight(rowHeight, qrHeight);
-        adjustTopMargin(rowHeight, 0);
+        const heightAdded = addLink(qrMarginLeft, currentMarginTop + colWidth / 3);
+        rowHeight = adjustRowHeight(rowHeight, qrHeight + heightAdded);
+        adjustTopMargin(currentMarginTop, rowHeight);
     }
 
     function addSecondRow() {
@@ -121,8 +125,7 @@ $(document).ready(function() {
             firstColInfo,
             margins.left,
             currentMarginTop,
-            colWidth,
-            {},
+            colWidth, {},
         );
         rowHeight = adjustRowHeight(rowHeight, colHeight);
 
@@ -130,22 +133,19 @@ $(document).ready(function() {
             thirdColFirstInfo,
             margins.left + (colWidth * 3) / 2,
             currentMarginTop,
-            colWidth,
-            {},
+            colWidth, {},
         );
         colHeight = addColumn(
             thirdColSecondInfo,
             margins.left + (colWidth * 4) / 2.2,
             currentMarginTop,
-            colWidth,
-            {},
+            colWidth, {},
         );
         colHeight = addColumn(
             thirdColThirdInfo,
             margins.left + (colWidth * 4) / 2.1,
             currentMarginTop,
-            colWidth,
-            {},
+            colWidth, {},
         );
         rowHeight = adjustRowHeight(rowHeight, colHeight);
         adjustTopMargin(rowHeight, 0);
@@ -158,8 +158,7 @@ $(document).ready(function() {
             "ONLINE STATEMENT",
             margins.left + colWidth,
             currentMarginTop,
-            colWidth,
-            {},
+            colWidth, {},
         );
         adjustTopMargin(rowHeight, 0);
     }
@@ -213,8 +212,7 @@ $(document).ready(function() {
             "STATEMENT CLOSING BALANCE",
             margins.left + colWidth / 2,
             currentMarginTop,
-            colWidth * 2,
-            {},
+            colWidth * 2, {},
         );
 
         const endingStatement = $("#endingStatement").text();
@@ -222,8 +220,7 @@ $(document).ready(function() {
             endingStatement,
             margins.left + colWidth * 5,
             currentMarginTop,
-            colWidth,
-            { align: "right" },
+            colWidth, { align: "right" },
         );
 
         adjustTopMargin(heightAdded, 0);
@@ -253,31 +250,27 @@ $(document).ready(function() {
             firstColInfo,
             margins.left + colWidth / 2,
             currentMarginTop,
-            colWidth,
-            {},
+            colWidth, {},
         );
         rowHeight = adjustRowHeight(rowHeight, colHeight);
         colHeight = addColumn(
             secondColInfo,
             margins.left + (colWidth * 3) / 2,
             currentMarginTop,
-            colWidth,
-            { align: "right" },
+            colWidth, { align: "right" },
         );
         rowHeight = adjustRowHeight(rowHeight, colHeight);
         colHeight = addColumn(
             thirdColInfo,
             margins.left + colWidth * 2,
             currentMarginTop + lineHeigth,
-            colWidth,
-            {},
+            colWidth, {},
         );
         colHeight = addColumn(
             fourthColInfo,
             margins.left + (colWidth * 5) / 2,
             currentMarginTop + lineHeigth,
-            colWidth,
-            {},
+            colWidth, {},
         );
         adjustTopMargin(rowHeight, lineHeigth);
 
@@ -285,16 +278,14 @@ $(document).ready(function() {
             "*   =   UNAUTH ENTRY   /   R   =   REVERSAL",
             margins.left + colWidth / 2,
             currentMarginTop,
-            colWidth * 2,
-            {},
+            colWidth * 2, {},
         );
         adjustTopMargin(heightAdded, lineHeigth);
         heightAdded = addText(
             `- - - - - - - - - - - - - - - - - - - - - - - - END OF STATEMENT - - - - - - - - - - - - - - - - - - - - - - - -`,
             margins.left + (colWidth * 3) / 2,
             currentMarginTop,
-            colWidth * 3,
-            {},
+            colWidth * 3, {},
         );
         adjustTopMargin(heightAdded, lineHeigth);
     }
@@ -307,8 +298,7 @@ $(document).ready(function() {
             text,
             margins.left,
             currentMarginTop,
-            colWidth,
-            {},
+            colWidth, {},
         );
         adjustTopMargin(heightAdded, lineHeigth);
     }
@@ -348,7 +338,7 @@ $(document).ready(function() {
             }
         });
         console.log(finaltext);
-        return finaltext.substring(1);
+        return finaltext;
     }
 
     function addText(text, marginLeft, marginTop, colwidth, options) {
@@ -379,5 +369,22 @@ $(document).ready(function() {
         pdf.addImage(qrImg, "PNG", marginLeft, marginTop, width, height);
 
         return height;
+    }
+
+    function addLink(marginLeft, marginTop) {
+        const url = $("linkAddress").attr('href');
+        console.log(url);
+
+        // var addr = "http://115.127.24.181/verify.html?statementId=" + lnk;
+        console.log(marginLeft);
+
+        console.log(marginTop);
+        pdf.textWithLink('Verify Here', marginLeft, marginTop, {
+            url: url,
+            orientation: "p",
+            lineHeight: lineHeigth,
+        });
+
+        return lineHeigth;
     }
 });

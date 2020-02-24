@@ -78,6 +78,10 @@ $("#CreateCon").click(function() {
                             console.log(response);
                             statementId = response.id;
                             genarateQR();
+                            var address = "http://115.127.24.181:9090/verify.html?statementId=" + statementId;
+                            $("#linkAddress").show();
+                            $("#linkAddress").attr('href', address);
+                            $("#linkAddress").css('color', 'black');
                         },
                         error: function(err) {
                             console.log(err);

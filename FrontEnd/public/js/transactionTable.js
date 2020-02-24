@@ -28,7 +28,7 @@ function convertTime(time) {
 
 $("#showAccountbtn").click(function() {
 
-
+    $("#linkAddress").hide();
 
     customerId = $("#customerNumberTextbox").val();
     start = $("#startDate").val();
@@ -52,7 +52,7 @@ $("#showAccountbtn").click(function() {
 
 
 
-            for (let i = 0; i < response.accountInfo.length; i++) {
+            for (let i = 1; i < response.accountInfo.length; i++) {
                 if (response.accountInfo[i].debit > 0) {
                     totalDebit = totalDebit + response.accountInfo[i].debit;
                     drCount += 1;
@@ -73,6 +73,7 @@ $("#showAccountbtn").click(function() {
 
                 response.accountInfo[i].date = convertTime(response.accountInfo[i].date);
                 endingStatement = response.accountInfo[response.accountInfo.length - 1].balance;
+                // endingStatement = totalCredit - totalDebit + response.accountInfo[0].credit;
                 response.accountInfo[i].balance = (response.accountInfo[i].balance.toString()) + ".00";
 
 
