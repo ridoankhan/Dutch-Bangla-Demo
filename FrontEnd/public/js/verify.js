@@ -17,6 +17,14 @@ function convertTime(time) {
     return fullDate;
 }
 
+function hashAccountNumber(accountNumber) {
+    let accountNo = accountNumber.split('');
+    for (let i = 2; i < accountNo.length - 3; i++) {
+        accountNo[i] = "x";
+    }
+    return accountNo.join('');
+}
+
 var globalObj = {};
 var tx;
 
@@ -49,19 +57,19 @@ $(document).ready(function() {
         url: "http://115.127.24.181:9091/statement/" + statementId,
         success: function(response) {
             globalObj = response;
-
+            response.account.accountNumber = hashAccountNumber(response.account.accountNumber);
             $("#fullNameIDTd").html(response.account.customer.customerName);
             $("#accountNumber").html(response.account.accountNumber);
-            $("#openingBalance").html(String(response.opening_balance) + ".00");
-            $("#closingBalance").html(String(response.closing_balance) + ".00");
-            $("#startDate").html(convertTime(response.startDate));
-            $("#endDate").html(convertTime(response.endDate));
-            $("#totalCredit").html(String(response.credits) + ".00");
-            $("#totalDebit").html(String(response.debits) + ".00");
-            $("#creditCount").html(String(response.cr_count) + " Times");
-            $("#debitCounts").html(String(response.dr_count) + " Times");
-            $("#unCollected").html(String(response.uncollected_funds) + ".00");
-            $("#currencylabel").html("Bangladeshi Taka");
+            // $("#closingBalance").html(String(response.closing_balance) + ".00");
+            // $("#openingBalance").html(String(response.opening_balance) + ".00");
+            // $("#startDate").html(convertTime(response.startDate));
+            // $("#endDate").html(convertTime(response.endDate));
+            // $("#totalCredit").html(String(response.credits) + ".00");
+            // $("#totalDebit").html(String(response.debits) + ".00");
+            // $("#creditCount").html(String(response.cr_count) + " Times");
+            // $("#debitCounts").html(String(response.dr_count) + " Times");
+            // $("#unCollected").html(String(response.uncollected_funds) + ".00");
+            // $("#currencylabel").html("Bangladeshi Taka");
             $("#blockAddress").html(response.tx_hash);
             $("#blockAddress").attr('href', 'https://ropsten.etherscan.io/tx/' + response.tx_hash);
             tx = response.tx_hash;
@@ -134,7 +142,18 @@ $(document).ready(function() {
                 document.getElementById('id01').style.display = 'none';
             },
             error: function(err) {
-                // console.log(err);
+                if (username == '' || password == '') {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Empyty',
+                        text: 'Invalid Username or Password'
+                    }).then(afterFailure());
+                }
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Access Denied',
+                    text: 'Invalid Username or Password'
+                }).then(afterFailure());
             }
         });
     });
