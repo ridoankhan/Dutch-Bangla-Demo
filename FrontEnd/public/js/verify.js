@@ -56,10 +56,11 @@ $(document).ready(function() {
         contentType: "application/json",
         url: "http://115.127.24.181:9091/statement/" + statementId,
         success: function(response) {
+
             globalObj = response;
-            response.account.accountNumber = hashAccountNumber(response.account.accountNumber);
             $("#fullNameIDTd").html(response.account.customer.customerName);
-            $("#accountNumber").html(response.account.accountNumber);
+            $("#accountNumber").html(hashAccountNumber(response.account.accountNumber));
+            $("#statementDate").html(convertTime(response.startDate) + " - " + convertTime(response.endDate));
             // $("#closingBalance").html(String(response.closing_balance) + ".00");
             // $("#openingBalance").html(String(response.opening_balance) + ".00");
             // $("#startDate").html(convertTime(response.startDate));
@@ -96,7 +97,7 @@ $(document).ready(function() {
                 var block = JSON.parse(response);
                 // console.log(block);
                 if ((globalObj.account.customer.customerName == block.accountName) &&
-                    (globalObj.account.accountNumber == block.accountNumber) &&
+
                     (globalObj.closing_balance == block.endBalance) &&
                     (globalObj.cr_count == block.crCount) &&
                     (globalObj.credits == block.totalCr) &&
@@ -146,14 +147,16 @@ $(document).ready(function() {
                     Swal.fire({
                         icon: 'error',
                         title: 'Empyty',
+                        text: 'Please fill in all the fields correctly'
+                    }).then(afterFailure());
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Access Denied',
                         text: 'Invalid Username or Password'
                     }).then(afterFailure());
                 }
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Access Denied',
-                    text: 'Invalid Username or Password'
-                }).then(afterFailure());
+
             }
         });
     });

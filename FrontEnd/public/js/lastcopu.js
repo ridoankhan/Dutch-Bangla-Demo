@@ -48,9 +48,10 @@ $("#showAccountbtn").click(function() {
         data: customerInfo,
         dataType: "json",
         success: function(response) {
-            response.accountInfo[0].date = convertTime(response.accountInfo[0].date);
-            response.accountInfo[0].credit = response.accountInfo[0].credit + ".00";
-            response.accountInfo[0].balance = response.accountInfo[0].balance + ".00";
+            // console.log(response);
+
+
+
             for (let i = 1; i < response.accountInfo.length; i++) {
                 if (response.accountInfo[i].debit > 0) {
                     totalDebit = totalDebit + response.accountInfo[i].debit;
